@@ -1,0 +1,38 @@
+.formbox{
+    box-shadow: 5px 5px 15px rgb(163, 163, 163);
+}
+.login-form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    font-family: 'Dosis', sans-serif;
+}
+.margin{
+    margin-left: 250px;
+}
+.yahoo{
+    background-color: rgb(46, 46, 100);
+    box-shadow: 5px 5px 5px rgb(61, 61, 61);
+    transition: transform .3s;
+}
+.yahoo:hover{
+    transform: scale(1.1);
+}
+.google{
+    background-color: rgb(218, 50, 50);
+    box-shadow: 5px 5px 5px rgb(61, 61, 61);
+    transition: transform .3s;
+}
+.google:hover{
+    transform: scale(1.1);
+}
+.microsoft{
+    background-color: rgb(54, 138, 61);
+    box-shadow: 5px 5px 5px rgb(61, 61, 61);
+    transition: transform .3s;
+}
+.microsoft:hover{
+    transform: scale(1.1);
+}

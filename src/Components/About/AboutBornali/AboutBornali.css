@@ -1,0 +1,47 @@
+.box{
+    margin-left: 150px;
+    margin-right: 150px;
+    box-shadow: 5px 5px 20px rgb(0, 0, 0);
+    /* height: 100vh; */
+}
+.bg{
+    background: url(../../../img/DUET_bg.png) no-repeat center fixed;
+    /* background-size: cover; */
+}
+.bg1{
+    background: url(../../../img/logo1.jpg) no-repeat center fixed;
+    /* background-size: cover; */
+}
+.bgw{
+    background-color: rgba(255, 255, 255, 0.959);
+}
+h1{
+    font-family: 'Dosis', sans-serif;
+    color: rgb(86, 142, 167);
+}
+h5{
+    font-family: 'Dosis', sans-serif;
+    text-align: justify;
+}
+h4{
+    font-family: 'Dosis', sans-serif;
+    color: rgb(86, 142, 167);
+    text-align: left;
+    font-weight: 600;
+}
+ul{
+    text-align: justify;
+    font-family: 'Dosis', sans-serif;
+}
+.li{
+    margin-left: 50px;
+}
+
+/* media queires */
+@media only screen and (max-width: 1024px) {
+    .box{
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    
+}

@@ -1,25 +1,99 @@
-import logo from './logo.svg';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './App.css';
+import AboutBornali from './Components/About/AboutBornali/AboutBornali';
+import AboutDDAC from './Components/About/AboutDDAC/AboutDDAC';
+import AboutDUET from './Components/About/AboutDUET/AboutDUET';
+// import Footer from './Components/Footer/Footer';
+// import Footer from './Components/Footer/Footer';
+import Home from './Components/Home/Home';
+// import Menu from './Components/Menu/Menu';
+import Login from './Components/Register/Login/Login';
+// import Menu from './Components/Menu/Menu';
+import Registration from './Components/Register/Registration/Registration';
+import AuthProvider from './context/AuthProvider';
+// import NotFound from './Components/NotFound/NotFound';
+// import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+// import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+// import Pay from './Components/Dashboard/Pay/Pay';
+// import MyOrder from './Components/Dashboard/MyOrder/MyOrder';
+// import Review from './Components/Dashboard/Review/Review';
+// import AddProduct from './Components/Admin/AddProduct/AddProduct';
+// import MakeAdmin from './Components/Admin/MakeAdmin/MakeAdmin';
+// import ManageAllOrders from './Components/Admin/ManageAllOrders/ManageAllOrders';
+// import ManageProducts from './Components/Admin/ManageProducts/ManageProducts';
+// import Explore from './Components/Explore/Explore';
+// import Purchase from './Components/Purchase/Purchase';
+// import AdminRoute from './Components/Admin/AdminRoute/AdminRoute';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div className="App2">
+          <AuthProvider>
+            <BrowserRouter>
+              {/* <Menu></Menu> */}
+              <Switch>
+                <Route exact path="/">
+                  <Home></Home>
+                </Route>
+                <Route path="/home">
+                  <Home></Home>
+                </Route>
+                <Route path="/registration">
+                  <Registration></Registration>
+                </Route>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
+                <Route path="/aboutBornali">
+                  <AboutBornali></AboutBornali>
+                </Route>
+                <Route path="/aboutDDAC">
+                  <AboutDDAC></AboutDDAC>
+                </Route>
+                <Route path="/aboutDUET">
+                  <AboutDUET></AboutDUET>
+                </Route>
+                {/* 
+                <PrivateRoute path="/dashboard">
+                  <Dashboard></Dashboard>
+                </PrivateRoute>
+                <PrivateRoute path="/pay">
+                  <Pay></Pay>
+                </PrivateRoute>
+                <PrivateRoute path="/myOrders/:email&&:name">
+                  <MyOrder></MyOrder>
+                </PrivateRoute>
+                <PrivateRoute path="/review">
+                  <Review></Review>
+                </PrivateRoute>
+                <AdminRoute path="/addProduct">
+                  <AddProduct></AddProduct>
+                </AdminRoute>
+                <AdminRoute path="/makeAdmin">
+                  <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute path="/manageAllOrders">
+                  <ManageAllOrders></ManageAllOrders>
+                </AdminRoute>
+                <AdminRoute path="/manageProducts">
+                  <ManageProducts></ManageProducts>
+                </AdminRoute>
+                <PrivateRoute path="/product/:pid&&:title">
+                  <Purchase></Purchase>
+                </PrivateRoute> */}
+                {/*
+                <Route path="*">
+                  <NotFound></NotFound>
+                </Route> */}
+              </Switch>
+            </BrowserRouter>
+          </AuthProvider>
+        </div>
     </div>
   );
 }
 
 export default App;
+
+

@@ -1,0 +1,15 @@
+.footer{
+    overflow: hidden;
+    background-color: rgb(170, 212, 247);
+}
+h4{
+    font-weight: 700;
+    font-family: 'Dosis', sans-serif;
+}
+p{
+    font-family: 'Dosis', sans-serif;
+}
+.footer-heading{
+    text-align: center;
+    color: rgb(59, 96, 133);
+}

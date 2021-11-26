@@ -1,0 +1,16 @@
+.home{
+    overflow: hidden;
+    font-family: 'Dosis', sans-serif;
+    
+}
+.heading{
+    font-family: 'Dosis', sans-serif;
+    color: rgb(21, 146, 155);
+    font-weight: 700;
+}
+.justify{
+    text-align: justify;
+}
+.speech{
+    background: url(../../img/quote.png) no-repeat left;
+}

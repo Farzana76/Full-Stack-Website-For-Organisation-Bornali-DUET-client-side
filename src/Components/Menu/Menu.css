@@ -1,0 +1,52 @@
+.navbar{
+    background-color:  rgb(170, 212, 247);
+    /* background-image: linear-gradient( to right, rgb(255, 60, 0), rgb(0, 0, 0)); */
+    
+  }
+  .items {
+      color: rgb(59, 96, 133);
+      list-style: none;
+      margin-right: 30px;
+      font-size: 25px;
+      font-weight: 400;
+      padding: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .3s;
+      font-family: 'Dosis', sans-serif;
+    }
+    .items:hover {
+      font-weight: 400;
+      border: 0;
+      color: rgb(255, 255, 255);
+      transform: scale(1.1);
+      text-decoration: none;
+    }
+    .item1{
+      color: rgb(0, 0, 0);
+      list-style: none;
+      margin-right: 30px;
+      font-size: 16px;
+      font-weight: 400;
+      padding: 5px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .3s;
+      font-family: 'Dosis', sans-serif;
+      display: flex;
+      align-items: center;
+    }
+    .button{
+      font-family: 'Dosis', sans-serif;
+      font-size: 25px;
+      color: rgb(59, 96, 133);
+      transition: transform .3s;
+    }
+    .button:hover{
+      color: white;
+      font-weight: 400;
+      transform: scale(1.1);
+    }
+    .dropdown{
+      z-index: 100;
+    }
