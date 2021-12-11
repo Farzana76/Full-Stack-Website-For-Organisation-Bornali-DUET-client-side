@@ -16,7 +16,7 @@ const Footer = () => {
                 <div className="col-md-6 col-lg-4 col-sm-12 text-light p-3">
                     <img className="w-25 mb-4" src={logo} alt="" />
                     <h4 className="fw-400 footer-heading">Location</h4>
-                    <h5 className="footer-heading">Dhaka, Bangladesh</h5>
+                    <h5 className="footer-heading">DUET, Gazipur</h5>
                 </div>
                 {/* second column */}
                 <div className="col-md-6 col-lg-4 col-sm-12 text-light p-3 mt-5 pt-5">
@@ -35,8 +35,7 @@ const Footer = () => {
                 {/* third column */}
                 <div className="col-md-6 col-lg-4 col-sm-12 text-light p-5 mt-4">
                     <h4 className="footer-heading">About</h4>
-                    <h5 className="footer-heading"> You'll find here the best artworks</h5>
-                    <h5 className="footer-heading"> to decor your home.</h5>
+                    <h6 className="footer-heading fw-normal">A Student Welfare Association of Former Students of Dhaka Polytechnic Institute at DUET </h6>
                 </div>
             </div>
             <div className="text-light p-2 h5 mb-0 last bg-dark">

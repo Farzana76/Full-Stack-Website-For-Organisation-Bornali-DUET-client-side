@@ -12,18 +12,21 @@ import Login from './Components/Register/Login/Login';
 import Registration from './Components/Register/Registration/Registration';
 import AuthProvider from './context/AuthProvider';
 // import NotFound from './Components/NotFound/NotFound';
-// import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
-// import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 // import Pay from './Components/Dashboard/Pay/Pay';
 // import MyOrder from './Components/Dashboard/MyOrder/MyOrder';
 // import Review from './Components/Dashboard/Review/Review';
-// import AddProduct from './Components/Admin/AddProduct/AddProduct';
+import AddMessages from './Components/Admin/AddMessages/AddMessages';
 // import MakeAdmin from './Components/Admin/MakeAdmin/MakeAdmin';
 // import ManageAllOrders from './Components/Admin/ManageAllOrders/ManageAllOrders';
 // import ManageProducts from './Components/Admin/ManageProducts/ManageProducts';
 // import Explore from './Components/Explore/Explore';
 // import Purchase from './Components/Purchase/Purchase';
-// import AdminRoute from './Components/Admin/AdminRoute/AdminRoute';
+import AdminRoute from './Components/Admin/AdminRoute/AdminRoute';
+import MakeAdmin from './Components/Admin/MakeAdmin/MakeAdmin';
+import PresidentSecretaryForm from './Components/Admin/CurrentPanel/PresidentSecretaryForm/PresidentSecretaryForm';
+import CurrentMembersForm from './Components/Admin/CurrentPanel/CurrentMembersForm/CurrentMembersForm';
 
 function App() {
   return (
@@ -54,10 +57,23 @@ function App() {
                 <Route path="/aboutDUET">
                   <AboutDUET></AboutDUET>
                 </Route>
-                {/* 
                 <PrivateRoute path="/dashboard">
                   <Dashboard></Dashboard>
                 </PrivateRoute>
+                <Route path="/addMessage">
+                  <AddMessages></AddMessages>
+                </Route>
+                <Route path="/makeAdmin">
+                  <MakeAdmin></MakeAdmin>
+                </Route>
+                <Route path="/addps">
+                  <PresidentSecretaryForm></PresidentSecretaryForm>
+                </Route>
+                <Route path="/addCurrentMembers">
+                  <CurrentMembersForm></CurrentMembersForm>
+                </Route>
+                {/* 
+                
                 <PrivateRoute path="/pay">
                   <Pay></Pay>
                 </PrivateRoute>
@@ -67,12 +83,6 @@ function App() {
                 <PrivateRoute path="/review">
                   <Review></Review>
                 </PrivateRoute>
-                <AdminRoute path="/addProduct">
-                  <AddProduct></AddProduct>
-                </AdminRoute>
-                <AdminRoute path="/makeAdmin">
-                  <MakeAdmin></MakeAdmin>
-                </AdminRoute>
                 <AdminRoute path="/manageAllOrders">
                   <ManageAllOrders></ManageAllOrders>
                 </AdminRoute>

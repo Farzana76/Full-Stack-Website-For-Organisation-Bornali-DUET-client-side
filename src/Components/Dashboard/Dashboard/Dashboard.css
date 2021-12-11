@@ -1,0 +1,5 @@
+.sidebar{
+    background-image: linear-gradient( to right, rgb(0, 0, 0), rgb(86, 142, 167), rgb(124, 182, 112));
+    font-family: 'Kodchasan', sans-serif;
+    color: rgb(59, 96, 133);
+}

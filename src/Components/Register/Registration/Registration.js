@@ -50,7 +50,7 @@ const Registration = () => {
                 </div>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12">
-                <div className="w-50 m-auto p-3 mt-3 border rounded mb-2 formbox ms-5">
+                <div className="w-50 p-3 mt-3 border rounded mb-2 formbox ms-5">
                     <h1 className="mb-2 heading fw-normal">Please Register</h1>
                     <div className="text-danger" style={{ height: "50px" }}>
                         {error}
@@ -97,18 +97,18 @@ const Registration = () => {
                     </form>
                     <hr></hr>
                     <p>Or Login with</p>
-                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 google">
+                    <button onClick={handleGoogleLogin} className="btn btn-danger me-2 heading text-light mt-2 fw-normal w-75 google">
                         {element2} Google
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo">
+                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo" style={{backgroundColor: 'rgb(46, 46, 100)'}}>
                         {element4} Yahoo
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 microsoft mb-3">
+                    <button onClick={handleGoogleLogin} className="btn btn-success me-2 heading text-light mt-2 fw-normal w-75 microsoft mb-3">
                         {element3} Microsoft
                     </button>
                 </div>
             </div>
-            <hr className="w-75 mx-auto mt-5"></hr>
+            <hr className="w-75 mx-auto mt-3"></hr>
             <h6 className="heading fw-normal">&copy; Developed by DazingDevs</h6>
         </div>
     );
