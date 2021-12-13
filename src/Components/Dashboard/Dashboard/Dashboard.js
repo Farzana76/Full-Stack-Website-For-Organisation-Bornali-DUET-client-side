@@ -61,12 +61,20 @@ const Dashboard = () => {
                         <CDBSidebarMenuItem icon="user">Make Admin</CDBSidebarMenuItem>
                         </NavLink>
 
+                        <NavLink exact to="/addAdvisor" activeClassName="activeClicked">
+                        <CDBSidebarMenuItem icon="columns">Add Advisor</CDBSidebarMenuItem>
+                        </NavLink>
+
                         <NavLink exact to="/addps" activeClassName="activeClicked">
                         <CDBSidebarMenuItem icon="table">Add President/Secretary</CDBSidebarMenuItem>
                         </NavLink>
 
                         <NavLink exact to="/addCurrentMembers" activeClassName="activeClicked">
                         <CDBSidebarMenuItem icon="columns">Add Current Members</CDBSidebarMenuItem>
+                        </NavLink>
+
+                        <NavLink exact to="/addStandingCommittee" activeClassName="activeClicked">
+                        <CDBSidebarMenuItem icon="columns">Add Standing Committee Members</CDBSidebarMenuItem>
                         </NavLink>
 
                         <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>

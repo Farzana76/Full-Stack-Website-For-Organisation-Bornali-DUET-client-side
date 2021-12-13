@@ -27,6 +27,8 @@ import AdminRoute from './Components/Admin/AdminRoute/AdminRoute';
 import MakeAdmin from './Components/Admin/MakeAdmin/MakeAdmin';
 import PresidentSecretaryForm from './Components/Admin/CurrentPanel/PresidentSecretaryForm/PresidentSecretaryForm';
 import CurrentMembersForm from './Components/Admin/CurrentPanel/CurrentMembersForm/CurrentMembersForm';
+import AdvisoryCommitteeForm from './Components/Admin/AdvisoryCommitteeForm/AdvisoryCommitteeForm';
+import StandingCommitteeForm from './Components/Admin/StandingCommitteeForm/StandingCommitteeForm';
 
 function App() {
   return (
@@ -66,11 +68,17 @@ function App() {
                 <Route path="/makeAdmin">
                   <MakeAdmin></MakeAdmin>
                 </Route>
+                <Route path="/addAdvisor">
+                  <AdvisoryCommitteeForm></AdvisoryCommitteeForm>
+                </Route>
                 <Route path="/addps">
                   <PresidentSecretaryForm></PresidentSecretaryForm>
                 </Route>
                 <Route path="/addCurrentMembers">
                   <CurrentMembersForm></CurrentMembersForm>
+                </Route>
+                <Route path="/addStandingCommittee">
+                  <StandingCommitteeForm></StandingCommitteeForm>
                 </Route>
                 {/* 
                 

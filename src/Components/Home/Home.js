@@ -52,14 +52,26 @@ const Home = () => {
             <Menu></Menu>
             <div className="home">
                 <Header></Header>
-                <Row xs={1} md={2} lg={3} className="g-4 ps-5 pe-5 mb-5 pt-3">
+                {/* <Row xs={1} md={2} lg={3} className="g-4 ps-5 pe-5 mb-5 pt-3">
                     {
                         messages.slice(0, 6).map(message => <Message
                             key = {message._id}
                             message={message}
                             ></Message>)
                     }
-                </Row> 
+                </Row>  */}
+                <div className="d-flex justify-content-center mt-3">
+                    <hr className="w-25 pt-1"></hr>
+                    <h2 className="heading mt-3">About Bornali</h2>
+                    <hr className="w-25 pt-1"></hr>
+                </div>
+                
+                <h5 className="px-5 mx-5 justify">
+                    Bornali is one of the largest student welfare association in Dhaka University Of Engineering & Technology (DUET).  This organization is consisting of the former students of Dhaka Polytechnic Institute (DPI). It established in 2006. Bornali arranges different events (Farewell of outgoing students, fresher reception, Iftar mahfil, Sports events etc) and provides different student welfare services (Digital library, financial assistance for poor members etc) in order to maintain the brotherhood environment in DUET. At present there are around 200 members in Bornali. The inter bonding between the members of Bornali is so strong that are follow-able... 
+                    <Link to="/aboutBornali" className="text-decoration-none">
+                        see more
+                    </Link>
+                </h5>
                 <div className="mt-5">
                     <Swiper
                         // modules={[Navigation, Pagination, Scrollbar, A11y]}
@@ -183,25 +195,14 @@ const Home = () => {
                         <img src={img} alt="president" width="280px"/>
                     </div>
                 </div> */}
-                <div className="d-flex justify-content-center mt-3">
-                    <hr className="w-25 pt-1"></hr>
-                    <h2 className="heading mt-3">About Bornali</h2>
-                    <hr className="w-25 pt-1"></hr>
-                </div>
                 
-                <h5 className="px-5 mx-5 justify">
-                    Bornali is one of the largest student welfare association in Dhaka University Of Engineering & Technology (DUET).  This organization is consisting of the former students of Dhaka Polytechnic Institute (DPI). It established in 2006. Bornali arranges different events (Farewell of outgoing students, fresher reception, Iftar mahfil, Sports events etc) and provides different student welfare services (Digital library, financial assistance for poor members etc) in order to maintain the brotherhood environment in DUET. At present there are around 200 members in Bornali. The inter bonding between the members of Bornali is so strong that are follow-able... 
-                    <Link to="/aboutBornali" className="text-decoration-none">
-                        see more
-                    </Link>
-                </h5>
                 <div className="d-flex justify-content-center">
                     <hr className="w-25 pt-1"></hr>
                     <h2 className="heading mt-3">About DDAC</h2>
                     <hr className="w-25 pt-1"></hr>
                 </div>
                 <h5 className="px-5 mx-5 justify">
-                Dhaka DUET admission coaching (DDAC) is a sister concern of Bornali welfare association and the fastest growing coaching for DUET admission. It was established in 2008 at Gazipur. It is directed by former student of Dhaka polytechnic institue. Now it is one the best DUET admission coaching...
+                Dhaka University of Engineering and Technology (DUET), Gazipur is the only school of diploma engineers to establish itself as an engineer in tackling the challenge of technology dependent globalization. DUET is one of the leading engineering universities in Bangladesh. The sole purpose of DHAKA DUET Admission Coaching (DDAC) is to develop the DUET as a suitable student and to fulfill the dreams of the students.It is the sister concern of BORNALI...
                     <Link to="/aboutDDAC" className="text-decoration-none">
                         see more
                     </Link>

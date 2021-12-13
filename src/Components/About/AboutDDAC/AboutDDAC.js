@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Menu from '../../Menu/Menu';
 import img from '../../../img/banner1.jpg';
 import Facebook from './Facebook/Facebook';
 import Youtube from './Youtube/Youtube';
 import Iframe from 'react-iframe';
 import Footer from '../../Footer/Footer';
+import StandingCommittee from './StandingCommittee/StandingCommittee';
+import { Row } from 'react-bootstrap';
 
 const AboutDDAC = () => {
+    const [standingCommittee, setStandingCommittee] = useState([]);
+
+    // loading president/secretary data
+    useEffect(() => {
+        fetch('http://localhost:5000/standingcommittee')
+        .then(res => res.json())
+        .then(data => setStandingCommittee(data))
+    }, [])
     return (
         <div className="bg1">
             <Menu></Menu>
@@ -41,21 +51,36 @@ const AboutDDAC = () => {
                         👉 Giving greeting gifts to 1st, 2nd, 3rd place holders in weekly examination.
                     </ul>
                 </h5>
-                <hr className="w-50 mx-auto mt-4"></hr>
+                <div className='mx-5'>
+                    <hr className="w-50 mx-auto mt-5"></hr>
+                    <h1 className="">Standing Committee of DDAC</h1>
+                    <hr className="w-50 mx-auto"></hr>
+                    <Row xs={1} md={2} lg={2} className="g-1 ps-5 pe-5 pt-3 ms-5">
+                        {
+                            standingCommittee.map(standingCom => <StandingCommittee
+                                key = {standingCom._id}
+                                standingCom = {standingCom}
+                                ></StandingCommittee>)
+                        }
+                    </Row>
+                </div>
+                <hr className="w-50 mx-auto"></hr>
+                    <h1 className="">Contact Information</h1>
+                    <hr className="w-50 mx-auto"></hr>
                 <div className="row">
-                    <div className="col-lg-4 col-md-12 col-sm-12">
+                    <div className="col-lg-5 col-md-12 col-sm-12">
                         <h5 className="px-5 mx-5 fw-bold mt-4">
                             Contact:
                         </h5>
                         <h5 className="ps-5 ms-5">
                             <span style={{color: "rgb(21, 146, 155)"}}>Our Head Office: </span>3rd floor, Madhumati Bhaban (behind CTT & MIST), DUET Gate, Gazipur-1707.
                         </h5>
-                    </div>
-                    <div className="col-lg-4 col-md-12 col-sm-12 d-flex">
                         <Facebook></Facebook>
                         <Youtube></Youtube>
                     </div>
-                    <Iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.4097610333592!2d90.41404251439364!3d24.016611384472625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755da4c3e6318d5%3A0x201a0a5b69ed91ed!2sDhaka%20DUET%20Admission%20Coaching%20(DDAC)!5e0!3m2!1sen!2sbd!4v1637611748625!5m2!1sen!2sbd" width="600" height="450" allowfullscreen="" loading="lazy"></Iframe>
+                    <div className="col-lg-7 col-md-12 col-sm-12 d-flex">
+                        <Iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3644.4097610333592!2d90.41404251439364!3d24.016611384472625!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755da4c3e6318d5%3A0x201a0a5b69ed91ed!2sDhaka%20DUET%20Admission%20Coaching%20(DDAC)!5e0!3m2!1sen!2sbd!4v1637611748625!5m2!1sen!2sbd" width="500" height="300" allowfullscreen="" loading="lazy"></Iframe>
+                    </div>
                 </div>
             </ div>
             <Footer></Footer>

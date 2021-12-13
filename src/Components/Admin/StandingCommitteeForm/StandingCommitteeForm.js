@@ -1,10 +1,10 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
-import useAuth from '../../../../hooks/useAuth';
-import Dashboard from '../../../Dashboard/Dashboard/Dashboard';
+import useAuth from '../../../hooks/useAuth';
+import Dashboard from '../../Dashboard/Dashboard/Dashboard';
 
-const CurrentMembersForm = () => {
+const StandingCommitteeForm = () => {
     const { user, loading } = useAuth();
     const { register, formState: { errors }, handleSubmit, reset, control, watch } = useForm();
 
@@ -30,32 +30,10 @@ const CurrentMembersForm = () => {
         }
     }, [numberOfTickets]);
 
-    // const onSubmit = e => {
-    //     // e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('designation', designation);
-    //     formData.append('numberOfTickets', numberOfTickets);
-    //     // formData.append('tickets', 1name);
-
-    //     fetch('http://localhost:5000/currentmembers', {
-    //         method: 'POST',
-    //         body: formData
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.insertedId) {
-    //                 alert('Members added successfully')
-    //                 console.log('Members added successfully')
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('Error:', error);
-    //         });
-    // }
 
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/currentmembers', data)
+        axios.post('http://localhost:5000/standingcommittee', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');
@@ -74,13 +52,11 @@ const CurrentMembersForm = () => {
                 <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
 
                 <div className="w-50 m-auto p-3 mt-5 border rounded mb-3 border-info add-service">
-                    <h1 className="mb-3 heading fw-normal">Add new members</h1>
+                    <h1 className="mb-3 heading fw-normal">Add Standing Committee Members</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <input {...register("designation", { required: true })} placeholder="Designation"/>
                         {errors.designation && "Designation is required"}
 
-                        {/* <input {...register("semester", { required: true })} placeholder="Dept - Semester i.e. CSE - 3/2"/>
-                        {errors.semester && "Semester is required"} */}
                         
                         <div className='text-left mb-3'>
                             <label className=''>Select no. of the members:</label>
@@ -102,7 +78,7 @@ const CurrentMembersForm = () => {
                                             <div className="invalid-feedback">{errors.tickets?.[i]?.name?.message}</div>
                                         </div>
                                         <div className="form-group col-6">
-                                            <label>Year/Semester</label>
+                                            <label>Dept. - Year/Semester</label>
                                             <input name={`tickets[${i}]sem`} {...register(`tickets.${i}.sem`)} type="text" className={`form-control ${errors.tickets?.[i]?.sem ? 'is-invalid' : ''} w-100`} />
                                             <div className="invalid-feedback">{errors.tickets?.[i]?.sem?.message}</div>
                                         </div>
@@ -119,4 +95,4 @@ const CurrentMembersForm = () => {
     );
 };
 
-export default CurrentMembersForm;
+export default StandingCommitteeForm;
