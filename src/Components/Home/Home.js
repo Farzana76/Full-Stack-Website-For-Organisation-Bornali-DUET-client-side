@@ -72,15 +72,16 @@ const Home = () => {
                         see more
                     </Link>
                 </h5>
-                <div className="mt-5">
+                <div className="mx-5">
                     <Swiper
                         // modules={[Navigation, Pagination, Scrollbar, A11y]}
-                        spaceBetween={-60}
+                        spaceBetween={-1}
                         slidesPerView={3}
-                        // autoplay={{delay: 2000}}
-                        navigation
+                        autoplay={{delay: 2000}}
+                        // navigation
                         pagination={{ clickable: true }}
-                        effect={'coverflow'}
+                        // effect={'fade'}
+                        // grabCursor={true}
                         zoom= {true}
                         breakpoints= {{
                             320: {
@@ -90,14 +91,14 @@ const Home = () => {
                               slidesPerView: 1,
                             },
                             992: {
-                              slidesPerView: 3,
+                              slidesPerView: 1,
                             }
                           }}
-                        coverflow= {{
-                            rotate: 50,
+                        coverflowEffect= {{
+                            rotate: 0,
                             stretch: 0,
-                            depth: 100,
-                            modifier: 1,
+                            depth: 200,
+                            modifier: 2,
                             slideShadows : true
                           }}
                         // scrollbar={{ draggable: true }}
@@ -106,16 +107,17 @@ const Home = () => {
                         onSlideChange={() => console.log("slide change")}
                         onSwiper={swiper => console.log(swiper)}
                         >
-                        <SwiperSlide>
-                            <Row xs={1} md={1} lg={1} className="">
+                        
+                            
                                 {
-                                    messages.slice(0, 6).map(message => <Message
+                                    messages.map(message => <SwiperSlide><Message
                                         key = {message._id}
                                         message={message}
-                                        ></Message>)
+                                        ></Message></SwiperSlide>)
                                 }
-                            </Row> 
-                        </SwiperSlide>
+                            
+                        
+                        </Swiper>
                         {/* <SwiperSlide>
                         <Row xs={1} md={1} lg={1} className="">
                                 <Col>
@@ -176,7 +178,7 @@ const Home = () => {
                                 </Col>
                             </Row>
                         </SwiperSlide>*/}
-                    </Swiper>
+                    
                 </div> 
                 {/* <div className="row px-5 mx-5 mt-3">
                     <div className="col-lg-9 mt-3 pt-5">
