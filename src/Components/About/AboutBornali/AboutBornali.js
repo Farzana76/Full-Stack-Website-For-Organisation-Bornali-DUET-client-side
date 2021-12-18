@@ -14,21 +14,21 @@ const AboutBornali = () => {
 
     // loading president/secretary data
     useEffect(() => {
-        fetch('http://localhost:5000/ps')
+        fetch('https://floating-hamlet-78764.herokuapp.com/ps')
         .then(res => res.json())
         .then(data => setPresident(data))
     }, [])
 
     // loading current panel data
     useEffect(() => {
-        fetch('http://localhost:5000/currentmembers')
+        fetch('https://floating-hamlet-78764.herokuapp.com/currentmembers')
         .then(res => res.json())
         .then(data => setCurrentMembers(data))
     }, [])
 
     // loading advisor data
     useEffect(() => {
-        fetch('http://localhost:5000/advisor')
+        fetch('https://floating-hamlet-78764.herokuapp.com/advisor')
         .then(res => res.json())
         .then(data => setAdvisors(data))
     }, [])
@@ -46,9 +46,11 @@ const AboutBornali = () => {
                 </h5>
                 <h1 className="pt-3">Current Panel</h1>
                 <hr className="w-50 mx-auto"></hr>
+                <Accordion className='px-5' defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header><h5 className='text-info'>Advisory Committee</h5></Accordion.Header>
+                        <Accordion.Body>
                 <div className='mx-5'>
-                    <h1 className='h4 text-left '>Advisory Committee:</h1>
-                    {/* <hr className="w-25"></hr> */}
                     {
                         advisors.map(advisor => <AdvisoryCommittee
                             key = {advisor._id}
@@ -56,14 +58,24 @@ const AboutBornali = () => {
                             ></AdvisoryCommittee>)
                     }
                 </div>
-                <Row xs={1} md={2} lg={2} className="g-1 ps-5 pe-5 pb-5 pt-3">
-                    {
-                        president.map(p => <PresidentSecretary
-                            key = {p._id}
-                            p = {p}
-                            ></PresidentSecretary>)
-                    }
-                </Row> 
+                </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
+                <Accordion className='px-5' defaultActiveKey="0">
+                    <Accordion.Item eventKey="0">
+                        <Accordion.Header><h5 className='text-info'>President & Secretary</h5></Accordion.Header>
+                        <Accordion.Body>
+                            <Row xs={1} md={2} lg={2} className="g-1 pb-5 pt-3">
+                                {
+                                    president.map(p => <PresidentSecretary
+                                        key = {p._id}
+                                        p = {p}
+                                        ></PresidentSecretary>)
+                                }
+                            </Row> 
+                        </Accordion.Body>
+                    </Accordion.Item>
+                </Accordion>
                 <Accordion className='px-5'>
                     {
                         currentMembers.map(currentMember => <CurrentMembers

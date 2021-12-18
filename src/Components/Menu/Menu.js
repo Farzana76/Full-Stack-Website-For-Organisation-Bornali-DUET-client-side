@@ -40,8 +40,8 @@ const Menu = () => {
                     {user.email ?
                         <div className="d-flex">
                             {admin ? 
-                                <NavLink to="/addMessage" className="items">Dashboard</NavLink> :
-                                <NavLink to="/addMessage" className="items">Dashboard</NavLink>}
+                                <NavLink to="/makeAdmin" className="items">Dashboard</NavLink> :
+                                <NavLink to="/makeAdmin" className="items">Dashboard</NavLink>}
                                 <div className="d-flex">
                                     <button onClick={logOut} className="button btn">Log out</button>
                                     <span className="item1 text-muted mt-2">Welcome, {user.displayName}</span>

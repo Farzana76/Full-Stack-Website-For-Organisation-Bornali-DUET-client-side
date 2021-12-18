@@ -30,32 +30,10 @@ const CurrentMembersForm = () => {
         }
     }, [numberOfTickets]);
 
-    // const onSubmit = e => {
-    //     // e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append('designation', designation);
-    //     formData.append('numberOfTickets', numberOfTickets);
-    //     // formData.append('tickets', 1name);
-
-    //     fetch('http://localhost:5000/currentmembers', {
-    //         method: 'POST',
-    //         body: formData
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             if (data.insertedId) {
-    //                 alert('Members added successfully')
-    //                 console.log('Members added successfully')
-    //             }
-    //         })
-    //         .catch(error => {
-    //             console.error('Error:', error);
-    //         });
-    // }
 
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/currentmembers', data)
+        axios.post('https://floating-hamlet-78764.herokuapp.com/currentmembers', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');
@@ -66,24 +44,15 @@ const CurrentMembersForm = () => {
 
     return (
         <div>
-        <div className="row">
-            <div className="col-2">
-                <Dashboard></Dashboard>
-            </div>
-            <div className="col-10">
-                <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
-
-                <div className="w-50 m-auto p-3 mt-5 border rounded mb-3 border-info add-service">
-                    <h1 className="mb-3 heading fw-normal">Add new members</h1>
+                <div className="w-75 m-auto p-3 mt-5 mb-3 add-service">
+                    <h2 className="mb-3 heading fw-normal">Add Current Panel Members</h2>
+                    <h5 className='ps-5 ms-3'>Designation</h5>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("designation", { required: true })} placeholder="Designation"/>
+                        <input {...register("designation", { required: true })} placeholder="i.e, 'Joint Secretary'" className='w-75'/>
                         {errors.designation && "Designation is required"}
-
-                        {/* <input {...register("semester", { required: true })} placeholder="Dept - Semester i.e. CSE - 3/2"/>
-                        {errors.semester && "Semester is required"} */}
                         
-                        <div className='text-left mb-3'>
-                            <label className=''>Select no. of the members:</label>
+                        <div className='text-left mb-3 w-75'>
+                            <h5 className=''>Select no. of the members:</h5>
                             <select name="numberOfTickets" {...register('numberOfTickets')} className={`form-control ${errors.numberOfTickets ? 'is-invalid' : ''}`}>
                                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(i =>
                                         <option key={i} value={i}>{i}</option>
@@ -114,8 +83,6 @@ const CurrentMembersForm = () => {
                     </form>
                 </div>
             </div>
-        </div>
-        </div>
     );
 };
 

@@ -35,7 +35,7 @@ const Home = () => {
 
     // loading products data
     useEffect(() => {
-        fetch('http://localhost:5000/messages')
+        fetch('https://floating-hamlet-78764.herokuapp.com/messages')
         .then(res => res.json())
         .then(data => setMessages(data))
     }, [])
@@ -75,10 +75,11 @@ const Home = () => {
                 <div className="mx-5">
                     <Swiper
                         // modules={[Navigation, Pagination, Scrollbar, A11y]}
-                        spaceBetween={-1}
+                        spaceBetween={0}
                         slidesPerView={3}
-                        autoplay={{delay: 2000}}
+                        autoplay={{delay: 3000}}
                         // navigation
+                        disableOnInteraction= {true}
                         pagination={{ clickable: true }}
                         // effect={'fade'}
                         // grabCursor={true}

@@ -24,7 +24,7 @@ const AddMessages = () => {
         formData.append('image', image);
         formData.append('msg', msg);
 
-        fetch('http://localhost:5000/messages', {
+        fetch('https://floating-hamlet-78764.herokuapp.com/messages', {
             method: 'POST',
             body: formData
         })
@@ -43,33 +43,50 @@ const AddMessages = () => {
 
     return (
         <div className="row">
-            <div className="col-2">
-                <Dashboard></Dashboard>
-            </div>
-            <div className="col-10">
-                <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
-
-                <div className="w-50 m-auto p-3 mt-5 border rounded mb-3 border-info add-service">
-                    <h1 className="mb-3 heading fw-normal">Please add a message</h1>
+                <div className="w-75 m-auto p-3 mt-5 mb-3 add-service">
+                    <h2 className="mb-3 heading fw-normal">Add President's Message</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("name", { required: true })} placeholder="President's Name" onChange={e => setName(e.target.value)}/>
-                        {errors.name?.type === 'required' && "Name is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Name:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("name", { required: true })} placeholder="President's Name" onChange={e => setName(e.target.value)}/>
+                                {errors.name?.type === 'required' && "Name is required"}
+                            </div>
+                        </div>
                         
-                        <input {...register("session", { required: true })} placeholder="Session, i.e 2020-2021" onChange={e => setSession(e.target.value)}/>
-                        {errors.session && "Session is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Session:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("session", { required: true })} placeholder="Session, i.e 2020-2021" onChange={e => setSession(e.target.value)}/>
+                                {errors.session && "Session is required"}
+                            </div>
+                        </div>
 
-                        <input {...register("image", { required: true })} type="file" onChange={e => setImage(e.target.files[0])}/>
-                        {errors.img?.type === 'required' && "Image is required"}
-                        
-                        <textarea {...register("msg", { required: true })} placeholder="Message" onChange={e => setMsg(e.target.value)}/>
-                        {errors.msg && "Message is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image", { required: true })} type="file" onChange={e => setImage(e.target.files[0])}/>
+                                {errors.img?.type === 'required' && "Image is required"}
+                            </div>
+                        </div>
 
-                        {/* <input ref={register} type="file" name="picture"/> */}
-                        
-                        {/* <input type="submit" className="btn text-light heading btn-lg fw-normal" style={{backgroundColor: 'rgb(59, 96, 133)'}} value="Add message"/> */}
-                        <button>Submit</button>
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Message:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <textarea {...register("msg", { required: true })} placeholder="Message" onChange={e => setMsg(e.target.value)}/>
+                                {errors.msg && "Message is required"}
+                            </div>
+                        </div>
+                        <button className='mt-3 btn btn-info'>Submit</button>
                     </form>
-                </div>
             </div>
         </div>
     );

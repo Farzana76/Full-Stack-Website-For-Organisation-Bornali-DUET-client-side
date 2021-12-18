@@ -13,7 +13,7 @@ const AboutDDAC = () => {
 
     // loading president/secretary data
     useEffect(() => {
-        fetch('http://localhost:5000/standingcommittee')
+        fetch('https://floating-hamlet-78764.herokuapp.com/standingcommittee')
         .then(res => res.json())
         .then(data => setStandingCommittee(data))
     }, [])

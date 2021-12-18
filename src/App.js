@@ -29,6 +29,11 @@ import PresidentSecretaryForm from './Components/Admin/CurrentPanel/PresidentSec
 import CurrentMembersForm from './Components/Admin/CurrentPanel/CurrentMembersForm/CurrentMembersForm';
 import AdvisoryCommitteeForm from './Components/Admin/AdvisoryCommitteeForm/AdvisoryCommitteeForm';
 import StandingCommitteeForm from './Components/Admin/StandingCommitteeForm/StandingCommitteeForm';
+import UpdateBornali from './Components/Admin/Update Bornali/UpdateBornali';
+import GalleryForm from './Components/Admin/GalleryForm/GalleryForm';
+import GalleryShow from './Components/Gallery/GalleryShow/GalleryShow';
+import GalleryFormFinal from './Components/Admin/GalleryForm/GalleryFormFinal';
+import Phone from './Components/Register/Phone/Phone';
 
 function App() {
   return (
@@ -50,6 +55,9 @@ function App() {
                 <Route path="/login">
                   <Login></Login>
                 </Route>
+                <Route path="/phone">
+                  <Phone></Phone>
+                </Route>
                 <Route path="/aboutBornali">
                   <AboutBornali></AboutBornali>
                 </Route>
@@ -67,6 +75,18 @@ function App() {
                 </Route>
                 <Route path="/makeAdmin">
                   <MakeAdmin></MakeAdmin>
+                </Route>
+                {/* <Route path="/addEvent">
+                  <GalleryForm></GalleryForm>
+                </Route> */}
+                <Route path="/addEvent">
+                  <GalleryFormFinal></GalleryFormFinal>
+                </Route>
+                <Route path="/gallery">
+                  <GalleryShow></GalleryShow>
+                </Route>
+                <Route path="/updateBornali">
+                  <UpdateBornali></UpdateBornali>
                 </Route>
                 <Route path="/addAdvisor">
                   <AdvisoryCommitteeForm></AdvisoryCommitteeForm>

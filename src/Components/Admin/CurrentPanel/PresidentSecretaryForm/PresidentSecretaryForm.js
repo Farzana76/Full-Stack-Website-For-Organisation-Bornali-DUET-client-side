@@ -26,14 +26,15 @@ const PresidentSecretaryForm = () => {
         formData.append('phn', phn);
         formData.append('email', email);
 
-        fetch('http://localhost:5000/ps', {
+        fetch('https://floating-hamlet-78764.herokuapp.com/ps', {
             method: 'POST',
             body: formData
         })
             .then(res => res.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert('Added successfully')
+                    alert('Added successfully');
+                    reset();
                     console.log('message added successfully')
                 }
             })
@@ -45,39 +46,72 @@ const PresidentSecretaryForm = () => {
 
     return (
         <div className="row">
-            <div className="col-2">
-                <Dashboard></Dashboard>
-            </div>
-            <div className="col-10">
-                <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
-
-                <div className="w-50 m-auto p-3 mt-5 border rounded mb-3 border-info add-service">
-                    <h1 className="mb-3 heading fw-normal">Please add a message</h1>
+                <div className="w-75 m-auto p-3 mt-5 mb-3 add-service">
+                    <h2 className="mb-3 heading fw-normal">Add President/Secretary</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input {...register("name", { required: true })} placeholder="President/Secretary Name" onChange={e => setName(e.target.value)}/>
-                        {errors.name?.type === 'required' && "Name is required"}
-
-                        <input {...register("designation", { required: true })} placeholder="Designation, i.e President/Secretary" onChange={e => setDesignation(e.target.value)}/>
-                        {errors.designation && "Designation is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Name:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("name", { required: true })} placeholder="President/Secretary Name" onChange={e => setName(e.target.value)}/>
+                                {errors.name?.type === 'required' && "Name is required"}
+                            </div>
+                        </div>
                         
-                        <input {...register("session", { required: true })} placeholder="Session, i.e 2020-2021" onChange={e => setSession(e.target.value)}/>
-                        {errors.session && "Session is required"}
-
-                        <input {...register("image", { required: true })} type="file" onChange={e => setImage(e.target.files[0])}/>
-                        {errors.img?.type === 'required' && "Image is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Designation:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("designation", { required: true })} placeholder="i.e President/Secretary" onChange={e => setDesignation(e.target.value)}/>
+                                {errors.designation && "Designation is required"}
+                            </div>
+                        </div>
                         
-                        <input {...register("phn", { required: true })} placeholder="Phone, i.e +880..." onChange={e => setPhn(e.target.value)}/>
-                        {errors.phn && "Phone number is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Session:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("session", { required: true })} placeholder="i.e 2020-2021" onChange={e => setSession(e.target.value)}/>
+                                {errors.session && "Session is required"}
+                            </div>
+                        </div>
 
-                        <input {...register("email", { required: true })} placeholder="Email" onChange={e => setEmail(e.target.value)}/>
-                        {errors.email && "Email is required"}
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image", { required: true })} type="file" onChange={e => setImage(e.target.files[0])}/> 
+                                {errors.img?.type === 'required' && "Image is required"}
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Phone:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("phn", { required: true })} placeholder="i.e +880..." onChange={e => setPhn(e.target.value)}/>
+                                {errors.phn && "Phone number is required"}
+                            </div>
+                        </div>
                         
-                        {/* <input type="submit" className="btn text-light heading btn-lg fw-normal" style={{backgroundColor: 'rgb(59, 96, 133)'}} value="Add message"/> */}
-                        <button>Submit</button>
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Email:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("email", { required: true })} placeholder="Email" onChange={e => setEmail(e.target.value)}/>
+                                {errors.email && "Email is required"}
+                            </div>
+                        </div>
+                        <button className='mt-3 btn btn-info'>Submit</button>
                     </form>
                 </div>
             </div>
-        </div>
     );
 };
 

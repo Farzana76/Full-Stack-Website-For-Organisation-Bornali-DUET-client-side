@@ -55,7 +55,7 @@ const AdvisoryCommitteeForm = () => {
 
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/advisor', data)
+        axios.post('https://floating-hamlet-78764.herokuapp.com/advisor', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');
@@ -65,50 +65,42 @@ const AdvisoryCommitteeForm = () => {
     }
     return (
         <div>
-        <div className="row">
-            <div className="col-2">
-                <Dashboard></Dashboard>
-            </div>
-            <div className="col-10">
-                <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
+        <div className="w-75 m-auto p-3 mb-3 add-service">
+            <h2 className="mb-3 heading fw-normal">Add Advisory Committee</h2>
+            <form onSubmit={handleSubmit(onSubmit)}>    
+                <div className='text-left mb-3 w-75'>
+                    <h5 className=''>Select no. of the members:</h5>
+                    <select name="numberOfTickets" value="Advisory Committee" {...register('numberOfTickets')} className={`form-control ${errors.numberOfTickets ? 'is-invalid' : ''}`}>
+                            {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(i =>
+                                <option key={i} value={i}>{i}</option>
+                            )}
+                    </select>
+                </div>
 
-                <div className="w-50 m-auto p-3 mt-5 border rounded mb-3 border-info add-service">
-                    <h1 className="mb-3 heading fw-normal">Add Advisory Committee</h1>
-                    <form onSubmit={handleSubmit(onSubmit)}>    
-                        <div className='text-left mb-3'>
-                            <label className=''>Select no. of the members:</label>
-                            <select name="numberOfTickets" value="Advisory Committee" {...register('numberOfTickets')} className={`form-control ${errors.numberOfTickets ? 'is-invalid' : ''}`}>
-                                    {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(i =>
-                                        <option key={i} value={i}>{i}</option>
-                                    )}
-                            </select>
-                        </div>
-
-                        {fields.map((item, i) => (
-                            <div key={i} className="list-group list-group-flush">
-                                <div className="list-group-item">
-                                    <h5 className="card-title">Member {i + 1}</h5>
-                                    <div className='row'>
-                                        <div className="form-group col-6">
-                                            <label>Name</label>
-                                            <input name={`tickets[${i}]name`} {...register(`tickets.${i}.name`)} type="text" className={`form-control ${errors.tickets?.[i]?.name ? 'is-invalid' : ''} w-100`} />
-                                            <div className="invalid-feedback">{errors.tickets?.[i]?.name?.message}</div>
-                                        </div>
-                                        <div className="form-group col-6">
-                                            <label>Position/Semester</label>
-                                            <input name={`tickets[${i}]sem`} {...register(`tickets.${i}.sem`)} type="text" className={`form-control ${errors.tickets?.[i]?.sem ? 'is-invalid' : ''} w-100`} />
-                                            <div className="invalid-feedback">{errors.tickets?.[i]?.sem?.message}</div>
-                                        </div>
-                                    </div>
+                {fields.map((item, i) => (
+                    <div key={i} className="list-group list-group-flush">
+                        <div className="list-group-item">
+                            <h5 className="card-title">Member {i + 1}</h5>
+                            <div className='row'>
+                                <div className="form-group col-6">
+                                    <label>Name</label>
+                                    <input name={`tickets[${i}]name`} {...register(`tickets.${i}.name`)} type="text" className={`form-control ${errors.tickets?.[i]?.name ? 'is-invalid' : ''} w-100`} />
+                                    <div className="invalid-feedback">{errors.tickets?.[i]?.name?.message}</div>
+                                </div>
+                                <div className="form-group col-6">
+                                    <label>Position/Semester</label>
+                                    <input name={`tickets[${i}]sem`} {...register(`tickets.${i}.sem`)} type="text" className={`form-control ${errors.tickets?.[i]?.sem ? 'is-invalid' : ''} w-100`} />
+                                    <div className="invalid-feedback">{errors.tickets?.[i]?.sem?.message}</div>
                                 </div>
                             </div>
-                        ))}
-                        <button className='mt-3 btn btn-info'>Submit</button>
-                    </form>
-                </div>
-            </div>
+                        </div>
+                    </div>
+                ))}
+                <button className='mt-3 btn btn-info'>Submit</button>
+            </form>
         </div>
-        </div>
+    </div>
+
     );
 };
 

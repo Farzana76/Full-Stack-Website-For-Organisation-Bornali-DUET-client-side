@@ -8,7 +8,7 @@ import {faArrowLeft, faRegistered} from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
 
 const Login = () => {
-    const { signInUsingGoogle, signInWithEmail, userEmail, userPassword, error } = useAuth();
+    const { signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, signInWithEmail, userEmail, userPassword, error } = useAuth();
 
     const element = <FontAwesomeIcon icon={faArrowLeft} />
     const element2 = <FontAwesomeIcon icon={faGoogle} />
@@ -23,6 +23,20 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         signInUsingGoogle()
+            .then(result => {
+                history.push('/phone');
+            })
+    }
+
+    const handleMicrosoftLogin = () => {
+        signInUsingMicrosoft()
+            .then(result => {
+                history.push(redirect_url);
+            })
+    }
+
+    const handleYahooLogin = () => {
+        signInUsingYahoo()
             .then(result => {
                 history.push(redirect_url);
             })
@@ -84,10 +98,10 @@ const Login = () => {
                     <button onClick={handleGoogleLogin} className="btn btn-danger me-2 heading text-light mt-2 fw-normal w-75 google">
                         {element2} Google
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo" style={{backgroundColor: 'rgb(46, 46, 100)'}}>
+                    <button onClick={handleYahooLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo" style={{backgroundColor: 'rgb(46, 46, 100)'}}>
                         {element4} Yahoo
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn btn-success me-2 heading text-light mt-2 fw-normal w-75 microsoft">
+                    <button onClick={handleMicrosoftLogin} className="btn btn-success me-2 heading text-light mt-2 fw-normal w-75 microsoft">
                         {element3} Microsoft
                     </button>
                 </div>

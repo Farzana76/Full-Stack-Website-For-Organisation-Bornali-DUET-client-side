@@ -33,7 +33,7 @@ const StandingCommitteeForm = () => {
 
     const onSubmit = data => {
         console.log(data);
-        axios.post('http://localhost:5000/standingcommittee', data)
+        axios.post('https://floating-hamlet-78764.herokuapp.com/standingcommittee', data)
             .then(res => {
                 if (res.data.insertedId) {
                     alert('added successfully');

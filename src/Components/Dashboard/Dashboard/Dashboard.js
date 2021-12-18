@@ -53,28 +53,20 @@ const Dashboard = () => {
                 {admin &&  */}
                 <CDBSidebarContent className="sidebar-content">
                     <CDBSidebarMenu>
-                        <NavLink exact to="/addMessage" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="plus-circle">Add message</CDBSidebarMenuItem>
-                        </NavLink>
-
                         <NavLink exact to="/makeAdmin" activeClassName="activeClicked">
                         <CDBSidebarMenuItem icon="user">Make Admin</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink exact to="/addAdvisor" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="columns">Add Advisor</CDBSidebarMenuItem>
+                        <NavLink exact to="/addEvent" activeClassName="activeClicked">
+                        <CDBSidebarMenuItem icon="user">Add Event</CDBSidebarMenuItem>
                         </NavLink>
 
-                        <NavLink exact to="/addps" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="table">Add President/Secretary</CDBSidebarMenuItem>
-                        </NavLink>
-
-                        <NavLink exact to="/addCurrentMembers" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="columns">Add Current Members</CDBSidebarMenuItem>
+                        <NavLink exact to="/updateBornali" activeClassName="activeClicked">
+                        <CDBSidebarMenuItem icon="columns">Bornali Committee</CDBSidebarMenuItem>
                         </NavLink>
 
                         <NavLink exact to="/addStandingCommittee" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="columns">Add Standing Committee Members</CDBSidebarMenuItem>
+                        <CDBSidebarMenuItem icon="columns">DDAC Committee</CDBSidebarMenuItem>
                         </NavLink>
 
                         <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
