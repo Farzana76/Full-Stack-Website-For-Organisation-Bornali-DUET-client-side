@@ -24,7 +24,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInUsingGoogle()
             .then(result => {
-                history.push('/phone');
+                history.push('/phoneLogin');
             })
     }
 

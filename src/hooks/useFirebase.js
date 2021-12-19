@@ -148,56 +148,95 @@ const useFirebase = () => {
           })
       }
 
-      const recaptcha = () => {
-        window.recaptchaVerifier = new RecaptchaVerifier(sign, {
-            'size': 'invisible',
-            'callback': (response) => {
-              // reCAPTCHA solved, allow signInWithPhoneNumber.
-              submitPhoneNumberAuth();
-            }
-          }, auth);
-      }
+    //   const recaptcha = () => {
+    //     window.recaptchaVerifier = new RecaptchaVerifier(sign, {
+    //         'size': 'invisible',
+    //         'callback': (response) => {
+    //           // reCAPTCHA solved, allow signInWithPhoneNumber.
+    //           submitPhoneNumberAuth();
+    //         }
+    //       }, auth);
+    //   }
        
 
-        const submitPhoneNumberAuth = e => {
-            // We are using the test phone numbers we created before
-            // var phoneNumber = document.getElementById("phoneNumber").value;
-            var phoneNumber = '+16005551234';
-            e.preventDefault();
-            var appVerifier = window.recaptchaVerifier;
+    //     const submitPhoneNumberAuth = e => {
+    //         // We are using the test phone numbers we created before
+    //         // var phoneNumber = document.getElementById("phoneNumber").value;
+    //         var phoneNumber = '+16005551234';
+    //         e.preventDefault();
+    //         var appVerifier = window.recaptchaVerifier;
 
-            signInWithPhoneNumber(auth, getPhone, appVerifier)
-            // signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    //         signInWithPhoneNumber(auth, getPhone, appVerifier)
+    //         // signInWithPhoneNumber(auth, phoneNumber, appVerifier)
+    //         .then((confirmationResult) => {
+    //             // SMS sent. Prompt user to type the code from the message, then sign the
+    //             // user in with confirmationResult.confirm(code).
+    //             window.confirmationResult = confirmationResult;
+    //             // ...
+    //           }).catch((error) => {
+    //             // Error; SMS not sent
+    //             // ...
+    //           });
+    //     }
+
+    //     const submitPhoneNumberAuthCode = (confirmationResult) => {
+    //         // We are using the test code we created before
+    //         // var code = document.getElementById("code").value;
+    //         var code = '123456';
+    //         confirmationResult.confirm(getCode).then((result) => {
+    //             // confirmationResult.confirm(code).then((result) => {
+    //             // User signed in successfully.
+    //             const user = result.user;
+    //             console.log(user);
+    //             setUser(result.user)
+    //             setError('');
+    //             // ...
+    //           }).catch((error) => {
+    //             // User couldn't sign in (bad verification code?)
+    //             // ...
+    //           });
+    //     }
+
+    const signInUsingOTP = (country, number, captchContainer, location, history) => {
+        const appVerifier = new RecaptchaVerifier(captchContainer, {
+            'size': 'normal',
+            'callback': (response) => {
+                // reCAPTCHA solved, allow signInWithPhoneNumber.
+                // ...
+                // console.log(response);
+
+
+            },
+            'expired-callback': () => {
+                // Response expired. Ask user to solve reCAPTCHA again.
+                // ...
+
+            }
+        }, auth);
+        signInWithPhoneNumber(auth, country + number, appVerifier)
             .then((confirmationResult) => {
                 // SMS sent. Prompt user to type the code from the message, then sign the
                 // user in with confirmationResult.confirm(code).
-                window.confirmationResult = confirmationResult;
                 // ...
-              }).catch((error) => {
+                const code = prompt("enter otp");
+                confirmationResult.confirm(code).then((res) => {
+                    // User signed in successfully.
+                    setUser(res.user);
+                    setError(null);
+                    const destination = location?.state?.from || '/';
+                    history.replace(destination);
+                    // ...
+                }).catch((error) => {
+                    // User couldn't sign in (bad verification code?)
+                    // ...
+                    console.log(error);
+                });
+            }).catch((error) => {
                 // Error; SMS not sent
                 // ...
-              });
-        }
-
-        const submitPhoneNumberAuthCode = (confirmationResult) => {
-            // We are using the test code we created before
-            // var code = document.getElementById("code").value;
-            var code = '123456';
-            confirmationResult.confirm(getCode).then((result) => {
-                // confirmationResult.confirm(code).then((result) => {
-                // User signed in successfully.
-                const user = result.user;
-                console.log(user);
-                setUser(result.user)
-                setError('');
-                // ...
-              }).catch((error) => {
-                // User couldn't sign in (bad verification code?)
-                // ...
-              });
-        }
-
-    
+                setError(error);
+            });
+    };
 
     const logOut = () => {
         setLoading(true);
@@ -239,9 +278,10 @@ const useFirebase = () => {
         signInUsingGoogle,
         signInUsingMicrosoft,
         signInUsingYahoo,
-        submitPhoneNumberAuth,
-        submitPhoneNumberAuthCode,
-        recaptcha,
+        signInUsingOTP,
+        // submitPhoneNumberAuth,
+        // submitPhoneNumberAuthCode,
+        // recaptcha,
         logOut }
 
 }

@@ -38,17 +38,36 @@ const Phone = () => {
     //     window.recaptchaWidgetId = widgetId;
     //   });
 
-    window.recaptchaVerifier = new RecaptchaVerifier('sign-in', {
-        'size': 'invisible',
-        'callback': (response) => {
-          // reCAPTCHA solved, allow signInWithPhoneNumber.
-          submitPhoneNumberAuth();
-        },
-        'expired-callback': () => {
-                  // Response expired. Ask user to solve reCAPTCHA again.
-                  // ...
-                }
-      }, auth);
+
+    useEffect(() => {
+        if (process.browser && !document.getElementById('recaptcha-container').hasChildNodes()) {
+            const recaptchaVerifier = new RecaptchaVerifier('recaptcha-container', {
+                'size': 'normal',
+            }, auth);
+            const recaptchaId = recaptchaVerifier.render()
+            const verified = recaptchaVerifier.verify()
+            if (verified.length) {
+                console.log(verified.length);
+                submitPhoneNumberAuth(true)
+                recaptchaId.then(function (widgetId) {
+                    window.recaptchaWidgetId = widgetId;
+                  });
+            }
+        }
+    }, [])
+
+
+    // window.recaptchaVerifier = new RecaptchaVerifier('sign-in', {
+    //     'size': 'invisible',
+    //     'callback': (response) => {
+    //       // reCAPTCHA solved, allow signInWithPhoneNumber.
+    //       submitPhoneNumberAuth();
+    //     },
+    //     'expired-callback': () => {
+    //               // Response expired. Ask user to solve reCAPTCHA again.
+    //               // ...
+    //             }
+    //   }, auth);
    
         
         const submitPhoneNumberAuth = e => {
@@ -71,10 +90,6 @@ const Phone = () => {
                 // ...
               });
         }
-
-        // window.recaptchaVerifier.render().then(function (widgetId) {
-        //     window.recaptchaWidgetId = widgetId;
-        //   });
 
         const submitPhoneNumberAuthCode = (confirmationResult) => {
             // We are using the test code we created before
