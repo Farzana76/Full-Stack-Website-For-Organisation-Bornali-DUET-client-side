@@ -9,7 +9,7 @@ import {faArrowLeft, faSignInAlt} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faMicrosoft, faYahoo } from '@fortawesome/free-brands-svg-icons';
 
 const Registration = () => {
-    const { error, getName, getEmail, userRegistration, getPassword, signInUsingGoogle } = useAuth();
+    const { error, getName, getEmail, userRegistration, getPassword, signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo } = useAuth();
 
     const element = <FontAwesomeIcon icon={faArrowLeft} />
     const element2 = <FontAwesomeIcon icon={faGoogle} />
@@ -25,8 +25,28 @@ const Registration = () => {
     const handleGoogleLogin = () => {
         signInUsingGoogle()
             .then(result => {
-                history.push(redirect_url);
+                history.push('/phoneLogin');
             })
+    }
+
+    const handleMicrosoftLogin = () => {
+        signInUsingMicrosoft()
+            .then(result => {
+                history.push('/phoneLogin');
+            })
+    }
+
+    const handleYahooLogin = () => {
+        signInUsingYahoo()
+            .then(result => {
+                history.push('/phoneLogin');
+            })
+    }
+
+    const handleLoginSubmit = e => {
+
+        userRegistration(history);
+        e.preventDefault();
     }
    
     return (
@@ -90,7 +110,7 @@ const Registration = () => {
                         />
                         <Link to="/login">
                         <button
-                            onClick={userRegistration}
+                            onClick={handleLoginSubmit}
                             className="btn btn-primary text-light heading btn fw-normal btn-lg">Register
                         </button>
                         </Link>
@@ -100,10 +120,10 @@ const Registration = () => {
                     <button onClick={handleGoogleLogin} className="btn btn-danger me-2 heading text-light mt-2 fw-normal w-75 google">
                         {element2} Google
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo" style={{backgroundColor: 'rgb(46, 46, 100)'}}>
+                    <button onClick={handleYahooLogin} className="btn me-2 heading text-light mt-2 fw-normal w-75 yahoo" style={{backgroundColor: 'rgb(46, 46, 100)'}}>
                         {element4} Yahoo
                     </button>
-                    <button onClick={handleGoogleLogin} className="btn btn-success me-2 heading text-light mt-2 fw-normal w-75 microsoft mb-3">
+                    <button onClick={handleMicrosoftLogin} className="btn btn-success me-2 heading text-light mt-2 fw-normal w-75 microsoft mb-3">
                         {element3} Microsoft
                     </button>
                 </div>

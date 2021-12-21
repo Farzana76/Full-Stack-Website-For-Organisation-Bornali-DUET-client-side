@@ -6,6 +6,8 @@ import useAuth from '../../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router-dom';
 
 const PhoneLogin = () => {
+    const { user } = useAuth();
+
        // const nextRoute= useParams()
     const [newUser, setNewUser] = useState(null);
     const { signInUsingOTP } = useAuth();
@@ -15,7 +17,10 @@ const PhoneLogin = () => {
     const redirect_url = location.state?.from || '/home';
 
     const handleSubmit = () => {
-        signInUsingOTP("+88", newUser.number, "recaptcha-container", location, history);
+        console.log(newUser.name);
+        console.log(newUser.email);
+        console.log(newUser.number);
+        signInUsingOTP("+1", newUser.name, newUser.email, newUser.number, "recaptcha-container", location, history);
                             // history.push(redirect_url);
     };
     return (
@@ -26,9 +31,11 @@ const PhoneLogin = () => {
                         <Form.Group className="mb-3" controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="text" placeholder="Enter Number" autoComplete="off" onBlur={(e) => {
-                                const user = {};
-                                user.number = e.target.value;
-                                setNewUser(user);
+                                const nUser = {};
+                                nUser.name = user.displayName;
+                                nUser.email = user.email;
+                                nUser.number = e.target.value;
+                                setNewUser(nUser);
                             }} required />
                             <Form.Text className="text-muted">
                                 We'll never share your number with anyone else.

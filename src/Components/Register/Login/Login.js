@@ -8,7 +8,7 @@ import {faArrowLeft, faRegistered} from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
 
 const Login = () => {
-    const { signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, signInWithEmail, userEmail, userPassword, error } = useAuth();
+    const { signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, signInWithEmail, userEmail, userPassword, error, setUserInfo } = useAuth();
 
     const element = <FontAwesomeIcon icon={faArrowLeft} />
     const element2 = <FontAwesomeIcon icon={faGoogle} />
@@ -22,23 +22,24 @@ const Login = () => {
 
 
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
-            .then(result => {
-                history.push('/phoneLogin');
-            })
+        signInUsingGoogle(location, history)
+            // .then(result => {
+            //     // setUserInfo();
+            //     history.push('/phoneLogin');
+            // })
     }
 
     const handleMicrosoftLogin = () => {
         signInUsingMicrosoft()
             .then(result => {
-                history.push(redirect_url);
+                history.push('/phoneLogin');
             })
     }
 
     const handleYahooLogin = () => {
         signInUsingYahoo()
             .then(result => {
-                history.push(redirect_url);
+                history.push('/phoneLogin');
             })
     }
 

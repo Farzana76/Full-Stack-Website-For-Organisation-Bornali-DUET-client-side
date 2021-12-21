@@ -35,6 +35,7 @@ import GalleryShow from './Components/Gallery/GalleryShow/GalleryShow';
 import GalleryFormFinal from './Components/Admin/GalleryForm/GalleryFormFinal';
 import Phone from './Components/Register/Phone/Phone';
 import PhoneLogin from './Components/Register/PhoneLogin/PhoneLogin';
+import DetailForm from './Components/Register/DetailForm/DetailForm';
 
 function App() {
   return (
@@ -58,6 +59,9 @@ function App() {
                 </Route>
                 <Route path="/phoneLogin">
                   <PhoneLogin></PhoneLogin>
+                </Route>
+                <Route path="/detailForm">
+                  <DetailForm></DetailForm>
                 </Route>
                 <Route path="/aboutBornali">
                   <AboutBornali></AboutBornali>

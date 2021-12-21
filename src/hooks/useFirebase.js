@@ -13,9 +13,15 @@ const useFirebase = () => {
     const [password, setPassword] = useState("");
     const [useremail, setuserEmail] = useState("");
     const [userpassword, setuserPassword] = useState("");
-    const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("");
-    const [signin, setSignin] = useState("");
+    const [admin, setAdmin] = useState(false);
+    const [oldUser, setOldUser] = useState({});
+
+    useEffect(() => {
+        fetch('https://floating-hamlet-78764.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => setOldUser(data));
+    }, [])
+
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -27,9 +33,31 @@ const useFirebase = () => {
         tenant: "f8cdef31-a31e-4b4a-93e4-5f571e91255a",
       })
 
-    const signInUsingGoogle = () => {
-        return signInWithPopup(auth, googleProvider)
-            .finally(() => { setLoading(false) });
+    const signInUsingGoogle = (location, history) => {
+        signInWithPopup(auth, googleProvider)
+            .then((result) => {
+                const user = result.user;
+                // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
+                setError('');
+                
+                // oldUser.map(ou => <UserCheck
+                //     key = {ou._id}
+                //     ou={ou}
+                //     oemail = {user.email}
+                //     ></UserCheck>)
+                // if(user.email)
+                // {
+                //     const destination = location?.state?.from || '/';
+                //     history.replace(destination);
+                // }
+                // else{
+                    history.replace('/phoneLogin');
+                // }
+                // const destination = location?.state?.from || '/';
+                
+            }).catch((error) => {
+                setError(error.message);
+            }).finally(() => { setLoading(false) });
     }
 
     const signInUsingMicrosoft = () => {
@@ -62,20 +90,6 @@ const useFirebase = () => {
         setuserPassword(e.target.value)
     }
 
-    const getPhone = e => {
-        console.log(e.target.value)
-        setPhone(e.target.value);
-    }
-
-    const getCode = e => {
-        setCode(e.target.value);
-    }
-
-    const sign = e => {
-        console.log(e.target.value)
-        setSignin(e.target.value);
-    }
-
     const setUserInfo = () => {
         updateProfile(auth.currentUser, {
             displayName: name
@@ -86,8 +100,8 @@ const useFirebase = () => {
           });
     }
 
-    const userRegistration = e => {
-        e.preventDefault();
+    const userRegistration = (history) => {
+        // e.preventDefault();
         console.log(email, password);
         if(email.length === 0){
             setError("Please enter your email")
@@ -110,9 +124,14 @@ const useFirebase = () => {
             setUserInfo();
             const user = result.user;
             console.log(user);
+            const userName = {displayName: name};
+            saveUser(email, name, user.phoneNumber, 'POST');
             verifyEmail();
             setError('');
             alert("Registration Successful!");
+            history.replace('/phoneLogin');
+
+            setUserInfo();
         })
         .catch((error) => {
             setError(error.message);
@@ -148,56 +167,7 @@ const useFirebase = () => {
           })
       }
 
-    //   const recaptcha = () => {
-    //     window.recaptchaVerifier = new RecaptchaVerifier(sign, {
-    //         'size': 'invisible',
-    //         'callback': (response) => {
-    //           // reCAPTCHA solved, allow signInWithPhoneNumber.
-    //           submitPhoneNumberAuth();
-    //         }
-    //       }, auth);
-    //   }
-       
-
-    //     const submitPhoneNumberAuth = e => {
-    //         // We are using the test phone numbers we created before
-    //         // var phoneNumber = document.getElementById("phoneNumber").value;
-    //         var phoneNumber = '+16005551234';
-    //         e.preventDefault();
-    //         var appVerifier = window.recaptchaVerifier;
-
-    //         signInWithPhoneNumber(auth, getPhone, appVerifier)
-    //         // signInWithPhoneNumber(auth, phoneNumber, appVerifier)
-    //         .then((confirmationResult) => {
-    //             // SMS sent. Prompt user to type the code from the message, then sign the
-    //             // user in with confirmationResult.confirm(code).
-    //             window.confirmationResult = confirmationResult;
-    //             // ...
-    //           }).catch((error) => {
-    //             // Error; SMS not sent
-    //             // ...
-    //           });
-    //     }
-
-    //     const submitPhoneNumberAuthCode = (confirmationResult) => {
-    //         // We are using the test code we created before
-    //         // var code = document.getElementById("code").value;
-    //         var code = '123456';
-    //         confirmationResult.confirm(getCode).then((result) => {
-    //             // confirmationResult.confirm(code).then((result) => {
-    //             // User signed in successfully.
-    //             const user = result.user;
-    //             console.log(user);
-    //             setUser(result.user)
-    //             setError('');
-    //             // ...
-    //           }).catch((error) => {
-    //             // User couldn't sign in (bad verification code?)
-    //             // ...
-    //           });
-    //     }
-
-    const signInUsingOTP = (country, number, captchContainer, location, history) => {
+    const signInUsingOTP = (country, name, email, number, captchContainer, location, history) => {
         const appVerifier = new RecaptchaVerifier(captchContainer, {
             'size': 'normal',
             'callback': (response) => {
@@ -221,15 +191,20 @@ const useFirebase = () => {
                 const code = prompt("enter otp");
                 confirmationResult.confirm(code).then((res) => {
                     // User signed in successfully.
+                    const user = res.user;
+                    user.name = name;
+                    user.email = email;
+                    console.log(user.phoneNumber);
+                    // saveUser(user.email, user.name, user.phoneNumber, 'PUT');
                     setUser(res.user);
                     setError(null);
-                    const destination = location?.state?.from || '/';
-                    history.replace(destination);
+                    history.push('/detailForm');
                     // ...
                 }).catch((error) => {
                     // User couldn't sign in (bad verification code?)
                     // ...
-                    console.log(error);
+                    alert("Wrong OTP. Please try again.")
+                    history.push('/login');
                 });
             }).catch((error) => {
                 // Error; SMS not sent
@@ -237,6 +212,12 @@ const useFirebase = () => {
                 setError(error);
             });
     };
+
+    useEffect(() => {
+        fetch(`https://floating-hamlet-78764.herokuapp.com/users/${user.email}`)
+            .then(res => res.json())
+            .then(data => setAdmin(data.admin))
+    }, [user.email])
 
     const logOut = () => {
         setLoading(true);
@@ -261,27 +242,34 @@ const useFirebase = () => {
         return () => unsubscribed;
     }, [])
 
+    const saveUser = (email, displayName, phone, method) => {
+        const user = { email, displayName, phone};
+        fetch('https://floating-hamlet-78764.herokuapp.com/users', {
+            method: method,
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then()
+    }
+
     return { 
         user, 
         error, 
         loading, 
-        sign,
         userRegistration, 
         getName, 
         getEmail, 
         getPassword, 
         userEmail, 
         userPassword,
-        getPhone,
-        getCode,
         signInWithEmail, 
         signInUsingGoogle,
         signInUsingMicrosoft,
         signInUsingYahoo,
         signInUsingOTP,
-        // submitPhoneNumberAuth,
-        // submitPhoneNumberAuthCode,
-        // recaptcha,
+        setUserInfo,
         logOut }
 
 }
