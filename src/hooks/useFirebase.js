@@ -37,9 +37,34 @@ const useFirebase = () => {
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
+                console.log(oldUser);
+                // console.log(oldUser[0].email);
+                console.log(oldUser.length);
                 // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
                 setError('');
-                
+                // let i;
+                // for(i=0; i<oldUser.length; i++){
+                //     if(oldUser[i].email === user.email){
+                //         console.log(oldUser[i].email);
+                //         console.log(user.email);
+                //         const destination = location?.state?.from || '/home';
+                //         history.replace(destination);
+                //     }
+                //     else if(i===oldUser.length){
+                //         history.replace('/phoneLogin');
+                //     }
+                // }
+
+                    const res = oldUser.find(ou => ou.email === user.email );
+                    console.log(res);
+                    if(res === undefined){
+                        history.replace('/phoneLogin');
+                    }
+                    else{
+                        const destination = location?.state?.from || '/home';
+                        history.replace(destination);
+                    }
+
                 // oldUser.map(ou => <UserCheck
                 //     key = {ou._id}
                 //     ou={ou}
@@ -51,7 +76,7 @@ const useFirebase = () => {
                 //     history.replace(destination);
                 // }
                 // else{
-                    history.replace('/phoneLogin');
+                    
                 // }
                 // const destination = location?.state?.from || '/';
                 
