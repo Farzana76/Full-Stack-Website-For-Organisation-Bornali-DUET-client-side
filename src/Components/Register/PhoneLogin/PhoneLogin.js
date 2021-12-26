@@ -4,6 +4,7 @@ import initializeAuthentication from '../../../Firebase/firebase.init';
 import { Form } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import { useHistory, useLocation } from 'react-router-dom';
+import img from '../../../img/logo.png';
 
 const PhoneLogin = () => {
     const { user } = useAuth();
@@ -24,13 +25,30 @@ const PhoneLogin = () => {
                             // history.push(redirect_url);
     };
     return (
-        <div className="container">
-            <div className="row">
-                <div className="col-lg-6 p-lg-5 p-md-3 p-2">
+        <div className='' style={{minHeight: "100vh"}}>
+            <div className="mt-1">
+            <div className="">
+                <div className="d-flex justify-content-between px-5 border-bottom pb-1">
+                    {/* <NavLink to="/home" className="items text-dark">
+                        <li className="h5">{element} Home</li>
+                    </NavLink> */}
+                    <img src={img} alt="Bornali logo" className="" style={{width: "50px"}}/>
+                    <h6 className="heading text-dark fw-normal mt-3">Welcome {user.displayName}</h6>
+                    {/* <h5 className="heading text-dark fst-italic fw-light">A Student Welfare Association of Former Students<br></br> of Dhaka Polytechnic Institute at DUET</h5> */}
+                </div>
+                {/* <hr style={{border: "1px solid lightgrey"}} className='m-0'></hr> */}
+            </div>
+            <div className='d-flex justify-content-center mt-3 mb-3'>
+            <div className="w-75">
+                <div className="w-100 p-3 border rounded">
+                    <h1 className="heading fw-normal">Phone Number Verification</h1>
+                    {/* <div className="text-danger" style={{ height: "50px" }}>
+                        {error}
+                    </div> */}
                     <Form className="mt-lg-5 pt-lg-5" onSubmit={(e) => { e.preventDefault(); }}>
                         <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Label>Email address</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Number" autoComplete="off" onBlur={(e) => {
+                            <Form.Label>Phone Number</Form.Label>
+                            <Form.Control type="text" placeholder="Enter Number, i.e 0155.." autoComplete="off" onBlur={(e) => {
                                 const nUser = {};
                                 nUser.name = user.displayName;
                                 nUser.email = user.email;
@@ -51,6 +69,9 @@ const PhoneLogin = () => {
                     </Form>
                 </div>
             </div>
+            </div>
+            <h6 className="heading fw-normal border-top w-100" style={{position: "absolute", bottom: "0%"}}>&copy; Developed by DazingDevs</h6>
+        </div>
         </div>
     );
 };

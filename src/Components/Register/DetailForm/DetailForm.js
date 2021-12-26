@@ -73,7 +73,7 @@ const DetailForm = () => {
                         <li className="h5">{element} Home</li>
                     </NavLink> */}
                     <img src={img} alt="Bornali logo" className="" style={{width: "50px"}}/>
-                    <h5 className="heading text-dark fw-normal mt-3">Welcome</h5>
+                    <h5 className="heading text-dark fw-normal mt-3">Welcome {user.displayName}</h5>
                     {/* <h5 className="heading text-dark fst-italic fw-light">A Student Welfare Association of Former Students<br></br> of Dhaka Polytechnic Institute at DUET</h5> */}
                 </div>
                 {/* <hr style={{border: "1px solid lightgrey"}} className='m-0'></hr> */}
@@ -92,8 +92,8 @@ const DetailForm = () => {
                             <div className='row'>
                                 <div className='col-lg-6 col-sm-12'>
                                     <div className='d-flex align-items-center'>
-                                        <input defaultValue={user.photoURL} {...register("image", { required: true })} type="file" id="files" className='w-100 mb-1 form-control' onChange={e => setImage(e.target.files[0])}/>
-                                        {/* <label for="files" className='btn btn-secondary d-flex justify-content-start mb-1'>Choose Profile Picture </label><small className='text-muted'>&nbsp;(250*250px, size less than 200KB)</small> */}
+                                        <input defaultValue={user.photoURL} {...register("image", { required: true })} type="file" id="files" className='w-100 mb-1 form-control' style={{display: "none"}} onChange={e => setImage(e.target.files[0])}/>
+                                        <label for="files" className='btn btn-secondary d-flex justify-content-start mb-1'>Choose Profile Picture </label><small className='text-muted'>&nbsp;(250*250px, size less than 200KB)</small>
                                         {errors.image?.type === 'required' && "Image is required"}
                                     </div>
 

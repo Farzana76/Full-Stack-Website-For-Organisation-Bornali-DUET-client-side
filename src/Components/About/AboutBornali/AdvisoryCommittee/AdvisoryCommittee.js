@@ -5,7 +5,7 @@ const AdvisoryCommittee = (props) => {
     const {tickets} = props.advisor;
     return (
         <div>
-            <Row xs={1} md={2} lg={3} className="g-3 ps-5 pe-5 pb-5 pt-3">
+            <Row xs={1} md={2} lg={3} className="g-3 ps-lg-5 pe-lg-5 pb-5 pt-3">
                 {tickets.map(ticket => 
                     <ul>
                         <li>

@@ -49,7 +49,7 @@ const AboutBornali = () => {
                 </h5>
                 <h1 className="pt-3">Current Panel</h1>
                 <hr className="w-50 mx-auto"></hr>
-                <Accordion className='px-5' defaultActiveKey="0">
+                <Accordion className='px-lg-5' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header><h5 className='text-info'>Advisory Committee</h5></Accordion.Header>
                         <Accordion.Body>
@@ -64,7 +64,7 @@ const AboutBornali = () => {
                 </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <Accordion className='px-5' defaultActiveKey="0">
+                <Accordion className='px-lg-5' defaultActiveKey="0">
                     <Accordion.Item eventKey="0">
                         <Accordion.Header><h5 className='text-info'>President & Secretary</h5></Accordion.Header>
                         <Accordion.Body>
@@ -79,7 +79,7 @@ const AboutBornali = () => {
                         </Accordion.Body>
                     </Accordion.Item>
                 </Accordion>
-                <Accordion className='px-5'>
+                <Accordion className='px-lg-5'>
                     {
                         currentMembers.map(currentMember => <CurrentMembers
                             key = {currentMember._id}

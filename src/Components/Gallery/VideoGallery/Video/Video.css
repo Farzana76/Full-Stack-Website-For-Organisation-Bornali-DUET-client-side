@@ -1,0 +1,13 @@
+.vdo{
+    width: 75%;
+    height: 400px;
+}
+
+/* media queires */
+@media only screen and (max-width: 1024px) {
+    .vdo{
+        width: 100%;
+        height: 200px;
+    }
+    
+}

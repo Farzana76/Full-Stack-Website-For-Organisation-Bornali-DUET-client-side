@@ -15,7 +15,7 @@ const Message = (props) => {
             {/* <SwiperSlide>
                 <Row xs={1} md={1} lg={1} className="">
                     <Col> */}
-                        <Card border='' className="bg-transparent border-0 card" style={{minHeight: '420px'}}>
+                        <Card border='' className="bg-transparent border-0 card msg">
                                     <Card.Img variant="top" className="mx-auto mt-3" src={`data:image/png;base64,${image}`} style={{width: "100px", borderRadius: "50%"}}/>  
                                     <Card.Title>
                                         <h4 className="text-center mb-0 mt-1">{name}</h4>
@@ -23,14 +23,14 @@ const Message = (props) => {
                                             President ({session})
                                         </small>
                                     </Card.Title>
-                                    <Card.Text className='px-5'>
-                                    <h6 className="text-secondary fst-italic justify px-5 mx-5">
+                                    <Card.Text className='px-lg-5'>
+                                    <h6 className="text-secondary fst-italic justify px-lg-5 mx-lg-5">
                                     {element}<br></br>
                                     
                                     <div className='p-3'>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    
                                     {msg}
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    
                                     </div>
                                     
                                     <div className='text-right'>{element2}</div>

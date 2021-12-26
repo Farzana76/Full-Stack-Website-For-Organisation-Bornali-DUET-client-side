@@ -12,6 +12,7 @@ import tinymce from 'tinymce/tinymce';
 
 // const ReactDOMServer = require('react-dom/server');
 // const HtmlToReactParser = require('html-to-react').Parser;
+// var TurndownService = require('turndown')
 
 
 
@@ -33,6 +34,9 @@ const JobPostForm = () => {
     //     console.log(editorRef.current.getContent());
     //     }
     // };
+    // // var turndownService = new TurndownService()
+    // // var markdown = turndownService.turndown(editorRef.current.getContent())
+
     
     // tinymce.init({
     //     selector: '#mytextarea'
@@ -72,32 +76,43 @@ const JobPostForm = () => {
     // const contentHTML = draftToHtml(contentRaw);
 
     //  document.getElementById("text").innerHTML = editorRef.current.getContent();
-    const onSubmit = e => {
-        // e.preventDefault();
+    // const onSubmit = e => {
+    //     // e.preventDefault();
 
-        // var myContent = tinymce.get("mytextarea").getContent();
-        // document.getElementById("text").html(myContent)
+    //     // var myContent = tinymce.get("mytextarea").getContent();
+    //     // document.getElementById("text").html(myContent)
 
-        const formData = new FormData();
-        formData.append('title', title);
-        formData.append('postedBy', user.displayName);
-        formData.append('dated', date);
-        // formData.append('desc', myContent);
+    //     const formData = new FormData();
+    //     formData.append('title', title);
+    //     formData.append('postedBy', user.displayName);
+    //     formData.append('dated', date);
+    //     formData.append('desc', editorRef.current.getContent());
 
-        fetch('https://floating-hamlet-78764.herokuapp.com/jobs', {
-            method: 'POST',
-            body: formData
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data.insertedId) {
-                    alert('Job added successfully')
-                    console.log('message added successfully')
+    //     fetch('https://floating-hamlet-78764.herokuapp.com/jobs', {
+    //         method: 'POST',
+    //         body: formData
+    //     })
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             if (data.insertedId) {
+    //                 alert('Job added successfully')
+    //                 console.log('message added successfully')
+    //             }
+    //         })
+    //         .catch(error => {
+    //             console.error('Error:', error);
+    //         });
+    // }
+
+    const onSubmit = data => {
+        console.log(data);
+        axios.post('https://floating-hamlet-78764.herokuapp.com/jobs', data)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert('Job added successfully');
+                    reset();
                 }
             })
-            .catch(error => {
-                console.error('Error:', error);
-            });
     }
 
     var today = new Date();
@@ -149,7 +164,7 @@ const JobPostForm = () => {
                                 }}
                             />
                             <button onClick={log}>Log editor content</button> */}
-                            {/* <textarea defaultValue="" {...register("context")} placeholder="Job Context" className='w-75'/>
+                            <textarea defaultValue="" {...register("context")} placeholder="Job Context" className='w-75'/>
                                
                             <textarea defaultValue="" {...register("responsibilities")} placeholder="Job Responsibilities" className='w-75'/>
 
@@ -161,7 +176,11 @@ const JobPostForm = () => {
 
                             <textarea defaultValue="" {...register("location")} placeholder="Job location" className='w-75'/>
 
-                            <textarea defaultValue="" {...register("salary")} placeholder="Salary" className='w-75'/> */}
+                            <textarea defaultValue="" {...register("salary")} placeholder="Salary" className='w-75'/>
+
+                            <input defaultValue={user.displayName} {...register("postedBy")} className='w-75' readOnly/>
+
+                            <input defaultValue={date} {...register("dated")} className='w-75' readOnly/>
                                     
                             <input type="submit" className="btn text-light heading btn-lg w-50 fw-normal" style={{backgroundColor: 'rgb(59, 96, 133)'}} value="Post Job"/>
                         </form>

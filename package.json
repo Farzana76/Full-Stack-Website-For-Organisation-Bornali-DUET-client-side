@@ -24,6 +24,7 @@
     "firebase": "^9.4.1",
     "html-react-parser": "^1.4.4",
     "html-to-react": "^1.4.7",
+    "multer": "^1.4.4",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.2",
@@ -37,6 +38,7 @@
     "react-slider-swiper": "^2.0.6",
     "react-youtube": "^7.13.1",
     "swiper": "^6.8.4",
+    "turndown": "^7.1.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

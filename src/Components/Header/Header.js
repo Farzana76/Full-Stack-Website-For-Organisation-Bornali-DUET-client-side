@@ -1,15 +1,15 @@
 import React from 'react';
 import { Carousel } from 'react-bootstrap';
-import img1 from '../../img/bg1.png';
-import img2 from '../../img/bg2.JPG';
-import img3 from '../../img/bg3.JPG';
-import img4 from '../../img/bg4.JPG';
+import img1 from '../../img/bg1.jpeg';
+import img2 from '../../img/bg2.png';
+import img3 from '../../img/bg3.jpeg';
+import img4 from '../../img/bg4.jpeg';
 import img5 from '../../img/bg5.JPG';
-import img6 from '../../img/bg6.JPG';
+import img6 from '../../img/bg6.jpeg';
 
 const Header = () => {
     return (
-        <div>
+        <div className='mt-5'>
             <Carousel fade>
                 <Carousel.Item>
                     <img

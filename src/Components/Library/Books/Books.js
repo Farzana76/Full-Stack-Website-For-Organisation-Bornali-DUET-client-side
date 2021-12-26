@@ -32,12 +32,12 @@ const Books = () => {
                     <h1 className='pt-5'>Available Books</h1>
                 </div>
                 <hr className='w-50 mx-auto'></hr>
-                <div className="d-flex justify-content-end me-5 mb-3">
+                <div className="d-flex justify-content-end mb-3">
                     <input
                         type="text"
                         onChange={handleSearch}
                         placeholder="Search by Book Title" 
-                        className='w-25 form-control'/>
+                        className='searchbox form-control'/>
                 </div>
                 <Table striped bordered hover responsive style={{backgroundColour: "blue"}}>
                     <thead>

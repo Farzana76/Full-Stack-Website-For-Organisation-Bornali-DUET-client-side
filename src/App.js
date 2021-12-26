@@ -45,6 +45,9 @@ import ManageLibrary from './Components/Librarian/ManageLibrary/ManageLibrary';
 import BornaliLibrary from './Components/Admin/BornaliLibrary/BornaliLibrary';
 import MakeLibrarian from './Components/Admin/MakeLibrarian/MakeLibrarian';
 import LibrarianRoute from './Components/Librarian/LibrarianRoute/LibrarianRoute';
+import ImageGalleryForm from './Components/Admin/GalleryForm/ImageGalleryForm/ImageGalleryForm';
+import Videos from './Components/Gallery/VideoGallery/Videos/Videos';
+import AllGallery from './Components/Gallery/AllGallery/AllGallery';
 
 function App() {
   return (
@@ -90,11 +93,17 @@ function App() {
                 <Route path="/jobs">
                   <Jobs></Jobs>
                 </Route>
-                <Route path="/gallery">
+                {/* <Route path="/gallery">
                   <GalleryShow></GalleryShow>
+                </Route> */}
+                <Route path="/allGallery">
+                  <AllGallery></AllGallery>
                 </Route>
                 <Route path="/library">
                   <Books></Books>
+                </Route>
+                <Route path="/videos">
+                  <Videos></Videos>
                 </Route>
                 <LibrarianRoute path="/bornaliLib">
                   <BornaliLibrary></BornaliLibrary>
@@ -134,6 +143,12 @@ function App() {
                 </AdminRoute>
                 <AdminRoute path="/manageLib">
                   <ManageLibrary></ManageLibrary>
+                </AdminRoute>
+                <AdminRoute path="/imageGalleryForm">
+                  <ImageGalleryForm></ImageGalleryForm>
+                </AdminRoute>
+                <AdminRoute path="/galleryForm">
+                  <GalleryForm></GalleryForm>
                 </AdminRoute>
                 {/* <AdminRoute path="/bornaliLib">
                   <BornaliLibrary></BornaliLibrary>

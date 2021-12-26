@@ -52,7 +52,7 @@ const Dashboard = () => {
                             <NavLink exact to="/jobForm" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user">Post Jobs</CDBSidebarMenuItem>
                             </NavLink>
-                            
+
                             <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
                         </CDBSidebarMenu>
                     </CDBSidebarContent>
@@ -68,9 +68,13 @@ const Dashboard = () => {
                             <CDBSidebarMenuItem icon="user" className="text-decoration-none">Make Librarian</CDBSidebarMenuItem>
                             </NavLink>
 
-                            <NavLink exact to="/addEvent" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="user">Add Event</CDBSidebarMenuItem>
+                            <NavLink exact to="/galleryForm" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Upload Gallery</CDBSidebarMenuItem>
                             </NavLink>
+
+                            {/* <NavLink exact to="/imageGalleryForm" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Image Gallery</CDBSidebarMenuItem>
+                            </NavLink> */}
 
                             <NavLink exact to="/bornaliLib" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user">Bornali Library</CDBSidebarMenuItem>

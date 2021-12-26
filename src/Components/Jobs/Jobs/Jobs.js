@@ -31,12 +31,12 @@ const Jobs = () => {
                     <h1 className='pt-5'>Job Circulars</h1>
                 </div>
                 <hr className='w-50 mx-auto'></hr>
-                <div className="d-flex justify-content-end me-5">
+                <div className="d-flex justify-content-end me-5 ms-5">
                     <input
                         type="text"
                         onChange={handleSearch}
                         placeholder="Search by Job Title" 
-                        className='w-25 form-control'/>
+                        className='searchbox form-control'/>
                 </div>
                 <Row xs={1} md={1} lg={1} className="g-4 ps-5 pe-5 pb-5 pt-3">
                         {
@@ -46,6 +46,7 @@ const Jobs = () => {
                                 ></Job>)
                         }
                 </Row>
+                
             </div>
             <Footer></Footer> 
         </>

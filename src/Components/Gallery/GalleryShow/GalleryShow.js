@@ -16,14 +16,8 @@ const GalleryShow = () => {
         .then(data => setEvents(data))
     }, [])
     return (
-        <div>
-            <Menu></Menu>
-            <div className='box'>
-                <div className='pt-5'>
-                    <h1 className='pt-5'>Bornali Events</h1>
-                </div>
-                <hr className='w-50 mx-auto'></hr>
-                <Row xs={1} md={1} lg={1} className="g-4 ps-3 pe-3 pt-3">
+        <div className='bg-white mt-4'>
+                <Row xs={1} md={1} lg={1} className="g-4 px-3 mx-auto pb-5 pt-3">
                     {
                         events.map(event => <Gallery
                             key = {event._id}
@@ -31,8 +25,6 @@ const GalleryShow = () => {
                             ></Gallery>)
                     }
                 </Row> 
-            </div>
-        <Footer></Footer>
         </div>
     );
 };

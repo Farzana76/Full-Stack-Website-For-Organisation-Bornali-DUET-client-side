@@ -56,7 +56,7 @@ const Registration = () => {
                     <NavLink to="/home" className="items text-dark">
                         <li className="h5">{element} Home</li>
                     </NavLink>
-                    <img src={img} alt="Bornali logo" className="w-25 mt-5 ms-5"/>
+                    <img src={img} alt="Bornali logo" className="w-25 mt-5"/>
                     <h1 className="heading text-dark fw-normal mt-3">Welcome to Bornali</h1>
                     <h5 className="heading text-dark fst-italic fw-light">A Student Welfare Association of Former Students<br></br> of Dhaka Polytechnic Institute at DUET</h5>
                     <h6 className="heading text-primary mt-5">Already a member? </h6>
@@ -70,8 +70,8 @@ const Registration = () => {
                 </div>
             </div>
             <div className="col-lg-6 col-md-12 col-sm-12">
-                <div className="w-50 p-3 mt-3 border rounded mb-2 formbox ms-5">
-                    <h1 className="mb-2 heading fw-normal">Please Register</h1>
+                <div className="p-3 mt-3 border rounded mb-2 formbox ms-5">
+                    <h1 className="mb-2 heading fw-normal">Register</h1>
                     <div className="text-danger" style={{ height: "50px" }}>
                         {error}
                     </div>

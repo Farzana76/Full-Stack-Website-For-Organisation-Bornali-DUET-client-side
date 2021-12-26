@@ -1,0 +1,11 @@
+.searchbox{
+    width: 25%
+}
+
+/* media queires */
+@media only screen and (max-width: 1024px) {
+    .searchbox{
+        width: 100%;
+    }
+    
+}

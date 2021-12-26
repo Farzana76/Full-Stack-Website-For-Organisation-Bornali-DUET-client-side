@@ -3,6 +3,7 @@ import { Row } from 'react-bootstrap';
 import Footer from '../../Footer/Footer';
 import Menu from '../../Menu/Menu';
 import Member from '../Member/Member';
+import './Members.css'
 
 const Members = () => {
     const [members, setMembers] = useState([]);
@@ -30,12 +31,12 @@ const Members = () => {
             </div>
             
             <hr className='w-50 mx-auto'></hr>
-            <div className="d-flex justify-content-end me-5">
+            <div className="d-flex justify-content-end mx-5 px-lg-5">
                 <input
                     type="text"
                     onChange={handleSearch}
                     placeholder="Search by name or blood group" 
-                    className='w-25 form-control'/>
+                    className='form-control searchbox'/>
             </div>
             <Row xs={1} md={2} lg={4} className="g-4 ps-5 pe-5 mb-5 pt-3">
                     {

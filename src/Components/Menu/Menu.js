@@ -85,7 +85,7 @@ const Menu = () => {
                     <NavLink to="/members" className="items" id="items">
                         <li>Members</li>
                     </NavLink>
-                    <NavLink to="/gallery" className="items" id="items">
+                    <NavLink to="/allGallery" className="items" id="items">
                         <li>Gallery</li>
                     </NavLink>
                     <NavLink to="/jobs" className="items" id="items">

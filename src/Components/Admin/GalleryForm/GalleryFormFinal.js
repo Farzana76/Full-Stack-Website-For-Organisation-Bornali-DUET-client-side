@@ -137,7 +137,7 @@ const GalleryFormFinal = () => {
                                 <h5 className='ps-5 ms-3'>Description:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <textarea {...register("msg")} placeholder="Description" onChange={e => setMsg(e.target.value)}/>
+                                <textarea defaultValue="" {...register("msg")} placeholder="Description" onChange={e => setMsg(e.target.value)}/>
                                 {/* {errors.msg && "Message is required"} */}
                             </div>
                         </div>
