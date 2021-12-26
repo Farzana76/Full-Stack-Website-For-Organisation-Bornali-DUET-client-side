@@ -43,6 +43,8 @@ import AddBook from './Components/Librarian/AddBook/AddBook';
 import Books from './Components/Library/Books/Books';
 import ManageLibrary from './Components/Librarian/ManageLibrary/ManageLibrary';
 import BornaliLibrary from './Components/Admin/BornaliLibrary/BornaliLibrary';
+import MakeLibrarian from './Components/Admin/MakeLibrarian/MakeLibrarian';
+import LibrarianRoute from './Components/Librarian/LibrarianRoute/LibrarianRoute';
 
 function App() {
   return (
@@ -94,6 +96,9 @@ function App() {
                 <Route path="/library">
                   <Books></Books>
                 </Route>
+                <LibrarianRoute path="/bornaliLib">
+                  <BornaliLibrary></BornaliLibrary>
+                </LibrarianRoute>
                 <PrivateRoute path="/jobForm">
                   <JobPostForm></JobPostForm>
                 </PrivateRoute>
@@ -102,6 +107,9 @@ function App() {
                 </AdminRoute>
                 <AdminRoute path="/makeAdmin">
                   <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute path="/makeLibrarian">
+                  <MakeLibrarian></MakeLibrarian>
                 </AdminRoute>
                 <AdminRoute path="/addEvent">
                   <GalleryFormFinal></GalleryFormFinal>
@@ -127,9 +135,10 @@ function App() {
                 <AdminRoute path="/manageLib">
                   <ManageLibrary></ManageLibrary>
                 </AdminRoute>
-                <AdminRoute path="/bornaliLib">
+                {/* <AdminRoute path="/bornaliLib">
                   <BornaliLibrary></BornaliLibrary>
-                </AdminRoute>
+                </AdminRoute> */}
+                
                 {/* 
                 
                 <PrivateRoute path="/pay">

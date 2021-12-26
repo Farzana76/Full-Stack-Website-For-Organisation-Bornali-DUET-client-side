@@ -14,6 +14,7 @@ const useFirebase = () => {
     const [useremail, setuserEmail] = useState("");
     const [userpassword, setuserPassword] = useState("");
     const [admin, setAdmin] = useState(false);
+    const [librarian, setLibrarian] = useState(false);
     const [oldUser, setOldUser] = useState({});
     const [findName, setFindName] = useState({});
 
@@ -218,8 +219,23 @@ const useFirebase = () => {
     useEffect(() => {
         fetch(`https://floating-hamlet-78764.herokuapp.com/users/${user.email}`)
             .then(res => res.json())
-            .then(data => setAdmin(data.admin))
+            .then(data => 
+                {
+                    console.log(data)
+                    setAdmin(data.admin);
+                    setLibrarian(data.librarian);
+                })
     }, [user.email])
+
+    // useEffect(() => {
+    //     fetch(`https://floating-hamlet-78764.herokuapp.com/users/${user.email}`)
+    //         .then(res => res.json())
+    //         .then(data => 
+    //             {
+    //                 console.log(data)
+    //                 setAdmin(data)
+    //             })
+    // }, [user.email])
 
     const logOut = () => {
         setLoading(true);
@@ -262,6 +278,7 @@ const useFirebase = () => {
         loading, 
         findName,
         admin,
+        librarian,
         userRegistration, 
         getName, 
         getEmail, 

@@ -10,7 +10,7 @@ import {faUser} from '@fortawesome/free-solid-svg-icons'
 const element = <FontAwesomeIcon icon={faUser} />
 
 const Menu = () => {
-    const { user, logOut, loading, admin, findName} = useAuth();
+    const { user, logOut, loading, admin, librarian, findName} = useAuth();
     const [oldUser, setOldUser] = useState({});
     // const [findName, setFindName] = useState({});
 
@@ -117,15 +117,8 @@ const Menu = () => {
                     
                     {user.email ?
                         <div className="">
-                            {admin ? 
-                                // <NavLink to="/makeAdmin" className="items">Dashboard</NavLink> :
-                                // <NavLink to="/makeAdmin" className="items">Dashboard</NavLink>}
-                                // <div className="d-flex">
-                                //     <button onClick={logOut} className="button btn">Log out</button>
-                                //     <span className="item1 text-muted mt-2">Welcome, {user.displayName}</span>
-                                // </div>
-                                
-                                <Dropdown className="dropdown b-0 items">
+                            {admin ?
+                                    <Dropdown className="dropdown b-0 items">
                                     <Dropdown.Toggle variant="" className="ps-0 items p-0 border rounded px-2 me-0" as="div">
                                         <NavLink to="#" className="items m-0 p-0">
                                             {element}
@@ -140,6 +133,24 @@ const Menu = () => {
                                         
                                             <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
                                       
+                                    </Dropdown.Menu>
+                                </Dropdown> :
+                                librarian ?
+                                    <Dropdown className="dropdown b-0 items">
+                                    <Dropdown.Toggle variant="" className="ps-0 items p-0 border rounded px-2 me-0" as="div">
+                                        <NavLink to="#" className="items m-0 p-0">
+                                            {element}
+                                        </NavLink>
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item className='text-muted'>{user.displayName}</Dropdown.Item>
+                                        <NavLink to="/bornaliLib" className="text-decoration-none">
+                                            <Dropdown.Item href="#/action-2">Dashboard</Dropdown.Item>
+                                        </NavLink>
+                                        
+                                            <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
+                                    
                                     </Dropdown.Menu>
                                 </Dropdown> :
                                     <Dropdown className="dropdown b-0 items">
@@ -158,7 +169,8 @@ const Menu = () => {
                                             <Dropdown.Item onClick={logOut}>Log out</Dropdown.Item>
                                             
                                         </Dropdown.Menu>
-                                    </Dropdown>}
+                                    </Dropdown>
+                                    }
                         </div>
                         :
                         <div className="d-flex">

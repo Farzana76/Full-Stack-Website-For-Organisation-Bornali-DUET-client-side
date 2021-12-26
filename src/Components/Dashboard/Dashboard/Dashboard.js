@@ -12,7 +12,7 @@ import useAuth from '../../../hooks/useAuth';
 import './Dashboard.css'
 
 const Dashboard = () => {
-    const { user, logOut, loading, admin } = useAuth();
+    const { user, logOut, loading, admin, librarian } = useAuth();
     const history = useHistory();
 
     const handleMyOrders = () => {
@@ -31,7 +31,7 @@ const Dashboard = () => {
                 </CDBSidebarHeader>
 
 
-                {!admin &&
+                {!admin && !librarian &&
                     <CDBSidebarContent className="sidebar-content">
                         <CDBSidebarMenu>
                             <NavLink exact to="/jobForm" activeClassName="activeClicked">
@@ -42,11 +42,30 @@ const Dashboard = () => {
                         </CDBSidebarMenu>
                     </CDBSidebarContent>
                 }
-                {admin &&  
+                {librarian && !admin &&
+                    <CDBSidebarContent className="sidebar-content">
+                        <CDBSidebarMenu>
+                            <NavLink exact to="/bornaliLib" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Bornali Library</CDBSidebarMenuItem>
+                            </NavLink>
+
+                            <NavLink exact to="/jobForm" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Post Jobs</CDBSidebarMenuItem>
+                            </NavLink>
+                            
+                            <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
+                        </CDBSidebarMenu>
+                    </CDBSidebarContent>
+                }
+                {admin && librarian &&  
                     <CDBSidebarContent className="sidebar-content">
                         <CDBSidebarMenu>
                             <NavLink exact to="/makeAdmin" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user" className="text-decoration-none">Make Admin</CDBSidebarMenuItem>
+                            </NavLink>
+
+                            <NavLink exact to="/makeLibrarian" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user" className="text-decoration-none">Make Librarian</CDBSidebarMenuItem>
                             </NavLink>
 
                             <NavLink exact to="/addEvent" activeClassName="activeClicked">
