@@ -50,7 +50,9 @@ const AboutDUET = () => {
                                 </Carousel.Caption> */}
                             </Carousel.Item>
                         </Carousel> 
-                        <h1 className="pt-3">About DUET</h1>
+                        <div className='pt-5'>
+                            <h1 className='pt-5'>About DUET</h1>
+                        </div>
                         <hr className="w-50 mx-auto"></hr>
                         <h5 className="px-5 mx-5">
                             The University started its operation in 1980 as College of Engineering at its temporary campus at Tejgaon, under the University of Dhaka and offered four years Bachelors degree in Civil Engineering, Electrical and Electronic Engineering, Mechanical Engineering to meet the growing need for advanced engineering education in Bangladesh. After a short span of time, College of Engineering is renamed as Dhaka Engineering College in 1981. Dhaka Engineering College shifted to its present campus at Gazipur City in 1983. Dhaka Engineering College was promoted to Bangladesh Institute of Technology (BIT), Dhaka as a degree awarding Institute by the Government ordinance in 1986 to find solutions to various problems it had been facing since its inception. BIT, Dhaka was changed to a full fledge University as the name “Dhaka University of Engineering and Technology (DUET), Gazipur” since 1st September 2003. University Administration is mostly defined and determined by the University Act (Dhaka University of Engineering & Technology, Gazipur Act, 2003).  DUET has ultimately turned into an Institution, which can now boost its commitment to quality engineering education and has earned a good reputation all over the world for the quality of its graduates. Till today, it has produced around 6,300 graduates in different branches. The curricula of DUET address the needs of present and future, through undergraduate and post-graduate programs.

@@ -20,7 +20,7 @@ const Dashboard = () => {
     }
 
     return (
-        <div style={{ display: 'flex', height: '100vh', overflow: 'scroll initial', fontFamily: '"Kodchasan", sans-serif', fontSize: '20px'}}>
+        <div style={{height: '100vh', overflow: 'scroll initial', fontFamily: '"Kodchasan", sans-serif', fontSize: '20px'}}>
 
             <CDBSidebar textColor="rgb(59, 96, 133)" style={{ backgroundColor: 'rgb(170, 212, 247)', position: 'fixed'}}>
                 
@@ -31,58 +31,49 @@ const Dashboard = () => {
                 </CDBSidebarHeader>
 
 
-                {/* {!admin && */}
-                {/* <CDBSidebarContent className="sidebar-content">
-                    <CDBSidebarMenu>
-                        <NavLink exact to="/pay" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="wallet">Pay</CDBSidebarMenuItem>
-                        </NavLink>
+                {!admin &&
+                    <CDBSidebarContent className="sidebar-content">
+                        <CDBSidebarMenu>
+                            <NavLink exact to="/jobForm" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Post Jobs</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        
-                        <CDBSidebarMenuItem icon="table" onClick={handleMyOrders} >My orders</CDBSidebarMenuItem>
-                        
+                            <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
+                        </CDBSidebarMenu>
+                    </CDBSidebarContent>
+                }
+                {admin &&  
+                    <CDBSidebarContent className="sidebar-content">
+                        <CDBSidebarMenu>
+                            <NavLink exact to="/makeAdmin" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user" className="text-decoration-none">Make Admin</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <NavLink exact to="/review" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="star">Review</CDBSidebarMenuItem>
-                        </NavLink>
+                            <NavLink exact to="/addEvent" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Add Event</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
-                    </CDBSidebarMenu>
-                </CDBSidebarContent> */}
-                {/* }
-                {admin &&  */}
-                <CDBSidebarContent className="sidebar-content">
-                    <CDBSidebarMenu>
-                        <NavLink exact to="/makeAdmin" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="user">Make Admin</CDBSidebarMenuItem>
-                        </NavLink>
+                            <NavLink exact to="/bornaliLib" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Bornali Library</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <NavLink exact to="/addEvent" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="user">Add Event</CDBSidebarMenuItem>
-                        </NavLink>
+                            <NavLink exact to="/jobForm" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Post Jobs</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <NavLink exact to="/updateBornali" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="columns">Bornali Committee</CDBSidebarMenuItem>
-                        </NavLink>
+                            <NavLink exact to="/updateBornali" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="columns">Bornali Committee</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <NavLink exact to="/addStandingCommittee" activeClassName="activeClicked">
-                        <CDBSidebarMenuItem icon="columns">DDAC Committee</CDBSidebarMenuItem>
-                        </NavLink>
+                            <NavLink exact to="/addStandingCommittee" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="columns">DDAC Committee</CDBSidebarMenuItem>
+                            </NavLink>
 
-                        <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
-                    </CDBSidebarMenu>
-                </CDBSidebarContent>
-                {/* } */}
-                
-
-                {/* <CDBSidebarFooter style={{ textAlign: 'center' }}>
-                    <button onClick={logOut} className="btn text-light button p-5 btn-lg">Log out</button>
-                </CDBSidebarFooter> */}
-
+                            <CDBSidebarMenuItem onClick={logOut} icon="minus-circle">Log Out</CDBSidebarMenuItem>
+                        </CDBSidebarMenu>
+                    </CDBSidebarContent>
+                } 
             </CDBSidebar>
-            <div>
-                {/* <h2 style={{backgroundImage: 'linear-gradient(to right, rgb(0, 0, 0), rgb(86, 142, 167), rgb(124, 182, 112))', width:'200%'}} className="p-3 pb-4 text-center text-light fw-bold">{user.displayName}'s dashboard</h2> */}
-            </div>
         </div>
     );
 };

@@ -76,7 +76,7 @@ const Home = () => {
                     <Swiper
                         // modules={[Navigation, Pagination, Scrollbar, A11y]}
                         spaceBetween={0}
-                        slidesPerView={3}
+                        slidesPerView={1}
                         autoplay={{delay: 3000}}
                         // navigation
                         disableOnInteraction= {true}
@@ -95,13 +95,13 @@ const Home = () => {
                               slidesPerView: 1,
                             }
                           }}
-                        coverflowEffect= {{
-                            rotate: 0,
-                            stretch: 0,
-                            depth: 200,
-                            modifier: 2,
-                            slideShadows : true
-                          }}
+                        // coverflowEffect= {{
+                        //     rotate: 0,
+                        //     stretch: 0,
+                        //     depth: 200,
+                        //     modifier: 2,
+                        //     slideShadows : true
+                        //   }}
                         // scrollbar={{ draggable: true }}
                         centeredSlides={true}
                         loop = {true}

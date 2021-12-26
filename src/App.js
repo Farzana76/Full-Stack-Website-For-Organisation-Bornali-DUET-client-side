@@ -36,6 +36,13 @@ import GalleryFormFinal from './Components/Admin/GalleryForm/GalleryFormFinal';
 import Phone from './Components/Register/Phone/Phone';
 import PhoneLogin from './Components/Register/PhoneLogin/PhoneLogin';
 import DetailForm from './Components/Register/DetailForm/DetailForm';
+import Members from './Components/MembersInfo/Members/Members';
+import JobPostForm from './Components/Dashboard/JobPostForm/JobPostForm';
+import Jobs from './Components/Jobs/Jobs/Jobs';
+import AddBook from './Components/Librarian/AddBook/AddBook';
+import Books from './Components/Library/Books/Books';
+import ManageLibrary from './Components/Librarian/ManageLibrary/ManageLibrary';
+import BornaliLibrary from './Components/Admin/BornaliLibrary/BornaliLibrary';
 
 function App() {
   return (
@@ -75,36 +82,54 @@ function App() {
                 <PrivateRoute path="/dashboard">
                   <Dashboard></Dashboard>
                 </PrivateRoute>
-                <Route path="/addMessage">
-                  <AddMessages></AddMessages>
+                <Route path="/members">
+                  <Members></Members>
                 </Route>
-                <Route path="/makeAdmin">
-                  <MakeAdmin></MakeAdmin>
-                </Route>
-                {/* <Route path="/addEvent">
-                  <GalleryForm></GalleryForm>
-                </Route> */}
-                <Route path="/addEvent">
-                  <GalleryFormFinal></GalleryFormFinal>
+                <Route path="/jobs">
+                  <Jobs></Jobs>
                 </Route>
                 <Route path="/gallery">
                   <GalleryShow></GalleryShow>
                 </Route>
-                <Route path="/updateBornali">
+                <Route path="/library">
+                  <Books></Books>
+                </Route>
+                <PrivateRoute path="/jobForm">
+                  <JobPostForm></JobPostForm>
+                </PrivateRoute>
+                <AdminRoute path="/addMessage">
+                  <AddMessages></AddMessages>
+                </AdminRoute>
+                <AdminRoute path="/makeAdmin">
+                  <MakeAdmin></MakeAdmin>
+                </AdminRoute>
+                <AdminRoute path="/addEvent">
+                  <GalleryFormFinal></GalleryFormFinal>
+                </AdminRoute>
+                <AdminRoute path="/updateBornali">
                   <UpdateBornali></UpdateBornali>
-                </Route>
-                <Route path="/addAdvisor">
+                </AdminRoute>
+                <AdminRoute path="/addAdvisor">
                   <AdvisoryCommitteeForm></AdvisoryCommitteeForm>
-                </Route>
-                <Route path="/addps">
+                </AdminRoute>
+                <AdminRoute path="/addps">
                   <PresidentSecretaryForm></PresidentSecretaryForm>
-                </Route>
-                <Route path="/addCurrentMembers">
+                </AdminRoute>
+                <AdminRoute path="/addCurrentMembers">
                   <CurrentMembersForm></CurrentMembersForm>
-                </Route>
-                <Route path="/addStandingCommittee">
+                </AdminRoute>
+                <AdminRoute path="/addStandingCommittee">
                   <StandingCommitteeForm></StandingCommitteeForm>
-                </Route>
+                </AdminRoute>
+                <AdminRoute path="/addBook">
+                  <AddBook></AddBook>
+                </AdminRoute>
+                <AdminRoute path="/manageLib">
+                  <ManageLibrary></ManageLibrary>
+                </AdminRoute>
+                <AdminRoute path="/bornaliLib">
+                  <BornaliLibrary></BornaliLibrary>
+                </AdminRoute>
                 {/* 
                 
                 <PrivateRoute path="/pay">

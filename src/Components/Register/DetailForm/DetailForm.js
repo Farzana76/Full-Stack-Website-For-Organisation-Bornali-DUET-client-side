@@ -18,6 +18,8 @@ const DetailForm = () => {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [image, setImage] = useState(null);
+    const [company, setCompany] = useState('');
+    const [position, setPosition] = useState('');
 
     const history = useHistory();
 
@@ -39,6 +41,8 @@ const DetailForm = () => {
         formData.append('bloodGroup', blood);
         formData.append('address', address);
         formData.append('city', city);
+        formData.append('company', company);
+        formData.append('position', position);
 
         fetch('https://floating-hamlet-78764.herokuapp.com/users', {
             method: 'PUT',
@@ -133,10 +137,10 @@ const DetailForm = () => {
                             <hr></hr>
                             <div className='row mb-5'>
                                 <div className='col-lg-6 col-sm-12'>
-                                    <input placeholder="Organization" defaultValue="" {...register("company")} className='w-100 mb-1 form-control'/>
+                                    <input placeholder="Organization" defaultValue="" {...register("company")} className='w-100 mb-1 form-control' onChange={e => setCompany(e.target.value)}/>
                                 </div>
                                 <div className='col-lg-6 col-sm-12'>
-                                    <input placeholder="Position" defaultValue="" {...register("currentP")} className='w-100 mb-1 form-control'/>
+                                    <input placeholder="Position" defaultValue="" {...register("position")} className='w-100 mb-1 form-control' onChange={e => setPosition(e.target.value)}/>
                                 </div>
                             </div>
                             <input type="submit" className="btn btn-primary text-light heading btn-lg w-50" value="Submit"/>

@@ -20,7 +20,7 @@ const PhoneLogin = () => {
         console.log(newUser.name);
         console.log(newUser.email);
         console.log(newUser.number);
-        signInUsingOTP("+1", newUser.name, newUser.email, newUser.number, "recaptcha-container", location, history);
+        signInUsingOTP("+88", newUser.name, newUser.email, newUser.number, "recaptcha-container", location, history);
                             // history.push(redirect_url);
     };
     return (

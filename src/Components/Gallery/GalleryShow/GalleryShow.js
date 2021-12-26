@@ -19,7 +19,9 @@ const GalleryShow = () => {
         <div>
             <Menu></Menu>
             <div className='box'>
-                <h1 className='pt-3'>Bornali Events</h1>
+                <div className='pt-5'>
+                    <h1 className='pt-5'>Bornali Events</h1>
+                </div>
                 <hr className='w-50 mx-auto'></hr>
                 <Row xs={1} md={1} lg={1} className="g-4 ps-3 pe-3 pt-3">
                     {

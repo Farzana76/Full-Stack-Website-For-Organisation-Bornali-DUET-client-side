@@ -15,6 +15,8 @@ const useFirebase = () => {
     const [userpassword, setuserPassword] = useState("");
     const [admin, setAdmin] = useState(false);
     const [oldUser, setOldUser] = useState({});
+    const [findName, setFindName] = useState({});
+
 
     useEffect(() => {
         fetch('https://floating-hamlet-78764.herokuapp.com/users')
@@ -42,43 +44,18 @@ const useFirebase = () => {
                 console.log(oldUser.length);
                 // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
                 setError('');
-                // let i;
-                // for(i=0; i<oldUser.length; i++){
-                //     if(oldUser[i].email === user.email){
-                //         console.log(oldUser[i].email);
-                //         console.log(user.email);
-                //         const destination = location?.state?.from || '/home';
-                //         history.replace(destination);
-                //     }
-                //     else if(i===oldUser.length){
-                //         history.replace('/phoneLogin');
-                //     }
-                // }
 
-                    const res = oldUser.find(ou => ou.email === user.email );
-                    console.log(res);
-                    if(res === undefined){
-                        history.replace('/phoneLogin');
-                    }
-                    else{
-                        const destination = location?.state?.from || '/home';
-                        history.replace(destination);
-                    }
-
-                // oldUser.map(ou => <UserCheck
-                //     key = {ou._id}
-                //     ou={ou}
-                //     oemail = {user.email}
-                //     ></UserCheck>)
-                // if(user.email)
-                // {
-                //     const destination = location?.state?.from || '/';
-                //     history.replace(destination);
-                // }
-                // else{
+                const res = oldUser.find(ou => ou.email === user.email );
+                if(res === undefined){
+                    history.replace('/phoneLogin');
+                }
+                else{
+                    setFindName(res.name);
+                    const destination = location?.state?.from || '/home';
+                    history.replace(destination);
                     
-                // }
-                // const destination = location?.state?.from || '/';
+                    // console.log(setFindName);
+                }
                 
             }).catch((error) => {
                 setError(error.message);
@@ -217,7 +194,7 @@ const useFirebase = () => {
                 confirmationResult.confirm(code).then((res) => {
                     // User signed in successfully.
                     const user = res.user;
-                    user.name = name;
+                    user.displayName = name;
                     user.email = email;
                     console.log(user.phoneNumber);
                     // saveUser(user.email, user.name, user.phoneNumber, 'PUT');
@@ -283,6 +260,8 @@ const useFirebase = () => {
         user, 
         error, 
         loading, 
+        findName,
+        admin,
         userRegistration, 
         getName, 
         getEmail, 

@@ -2,7 +2,8 @@ import React from 'react';
 import { Card, Col, Row } from 'react-bootstrap';
 import { SwiperSlide } from 'swiper/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faQuoteLeft, faQuoteRight} from '@fortawesome/free-solid-svg-icons'
+import {faQuoteLeft, faQuoteRight} from '@fortawesome/free-solid-svg-icons';
+import './Message.css'
 
 const element = <FontAwesomeIcon icon={faQuoteLeft} />
 const element2 = <FontAwesomeIcon icon={faQuoteRight} />
@@ -14,7 +15,7 @@ const Message = (props) => {
             {/* <SwiperSlide>
                 <Row xs={1} md={1} lg={1} className="">
                     <Col> */}
-                        <Card border='' className="bg-transparent border-0" style={{minHeight: '400px'}}>
+                        <Card border='' className="bg-transparent border-0 card" style={{minHeight: '420px'}}>
                                     <Card.Img variant="top" className="mx-auto mt-3" src={`data:image/png;base64,${image}`} style={{width: "100px", borderRadius: "50%"}}/>  
                                     <Card.Title>
                                         <h4 className="text-center mb-0 mt-1">{name}</h4>

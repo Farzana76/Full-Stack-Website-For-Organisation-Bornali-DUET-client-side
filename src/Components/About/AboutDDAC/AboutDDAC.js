@@ -21,7 +21,10 @@ const AboutDDAC = () => {
         <div className="bg1">
             <Menu></Menu>
             <div className="box bgw">
-                <h1 className="pt-3">About DDAC</h1>
+                <div className='pt-5'>
+                    <h1 className='pt-5'>About DDAC</h1>
+                </div>
+                {/* <h1 className="pt-3">About DDAC</h1> */}
                 <hr className="w-50 mx-auto"></hr>
                 <h5 className="px-5 mx-5">
                     Dhaka University of Engineering and Technology (DUET), Gazipur is the only school of diploma engineers to establish itself as an engineer in tackling the challenge of technology dependent globalization. DUET is one of the leading engineering universities in Bangladesh. The sole purpose of DHAKA DUET Admission Coaching (DDAC) is to develop the DUET as a suitable student and to fulfill the dreams of the students.It is the sister concern of BORNALI.
