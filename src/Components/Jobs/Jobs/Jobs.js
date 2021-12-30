@@ -14,6 +14,7 @@ const Jobs = () => {
         .then(data => {
             setJobs(data);
             setDisplayJobs(data);
+            
         })
     }, [])
 
@@ -40,6 +41,7 @@ const Jobs = () => {
                 </div>
                 <Row xs={1} md={1} lg={1} className="g-4 ps-5 pe-5 pb-5 pt-3">
                         {
+                            
                             displayJobs.map(member => <Job
                                 key = {member._id}
                                 member={member}

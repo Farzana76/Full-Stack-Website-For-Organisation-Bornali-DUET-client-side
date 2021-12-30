@@ -18,6 +18,16 @@ const GalleryFormFinal = () => {
     const [image3, setImage3] = useState(null);
     const [image4, setImage4] = useState(null);
     const [image5, setImage5] = useState(null);
+    const [image6, setImage6] = useState(null);
+    const [image7, setImage7] = useState(null);
+    const [image8, setImage8] = useState(null);
+    const [image9, setImage9] = useState(null);
+    const [image10, setImage10] = useState(null);
+    const [image11, setImage11] = useState(null);
+    const [image12, setImage12] = useState(null);
+    const [image13, setImage13] = useState(null);
+    const [image14, setImage14] = useState(null);
+    const [image15, setImage15] = useState(null);
     const [msg, setMsg] = useState(false);
 
     const onSubmit = e => {
@@ -33,6 +43,16 @@ const GalleryFormFinal = () => {
         formData.append('image3', image3);
         formData.append('image4', image4);
         formData.append('image5', image5);
+        formData.append('image6', image6);
+        formData.append('image7', image7);
+        formData.append('image8', image8);
+        formData.append('image9', image9);
+        formData.append('image10', image10);
+        formData.append('image11', image11);
+        formData.append('image12', image12);
+        formData.append('image13', image13);
+        formData.append('image14', image14);
+        formData.append('image15', image15);
         formData.append('msg', msg);
         console.log(formData.name);
         fetch('https://floating-hamlet-78764.herokuapp.com/event', {
@@ -53,38 +73,32 @@ const GalleryFormFinal = () => {
 
     return (
         <div className="row">
-            <div className="col-2">
-                <Dashboard></Dashboard>
-            </div>
-            <div className="col-10">
-                <h2 style={{backgroundColor: 'rgb(170, 212, 247)', fontFamily: '"Dosis", sans-serif', color: 'rgb(59, 96, 133)'}} className="p-3 pb-4 text-center fw-bold mb-5">{user.displayName}'s dashboard</h2>
-
-                <div className="w-75 m-auto p-3 mt-5 mb-3 add-service">
-                    <h2 className="mb-3 heading fw-normal">Add President's Message</h2>
+                <div className="w-100 m-auto p-3 mt-5 mb-3 add-service">
+                    <h2 className="mb-3 heading fw-normal">Upload Image Gallery</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className='row w-100'>
                             <div className='col-lg-2'>
                                 <h5 className='ps-5 ms-3'>Name:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("name", { required: true })} placeholder="President's Name" onChange={e => setName(e.target.value)}/>
+                                <input {...register("name", { required: true })} placeholder="Event Name" onChange={e => setName(e.target.value)}/>
                                 {errors.name?.type === 'required' && "Name is required"}
                             </div>
                         </div>
                         
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Session:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Year:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("session", { required: true })} placeholder="Session, i.e 2020-2021" onChange={e => setSession(e.target.value)}/>
+                                <input {...register("session", { required: true })} placeholder="Year, i.e 2021" onChange={e => setSession(e.target.value)}/>
                                 {errors.session && "Session is required"}
                             </div>
                         </div>
 
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Image 1:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Image1:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
                                 <input {...register("image1", { required: true })} type="file" onChange={e => setImage1(e.target.files[0])}/>
@@ -94,41 +108,127 @@ const GalleryFormFinal = () => {
 
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Image 2:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Image2:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("image2", { required: true })} type="file" onChange={e => setImage2(e.target.files[0])}/>
-                                {errors.image2?.type === 'required' && "Image is required"}
+                                <input {...register("image2")} type="file" onChange={e => setImage2(e.target.files[0])}/>
                             </div>
                         </div>
 
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Image 3:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Image3:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("image3", { required: true })} type="file" onChange={e => setImage3(e.target.files[0])}/>
-                                {errors.image3?.type === 'required' && "Image is required"}
+                                <input {...register("image3")} type="file" onChange={e => setImage3(e.target.files[0])}/>
                             </div>
                         </div>
 
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Image 4:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Image4:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("image4", { required: true })} type="file" onChange={e => setImage4(e.target.files[0])}/>
-                                {errors.image4?.type === 'required' && "Image is required"}
+                                <input {...register("image4")} type="file" onChange={e => setImage4(e.target.files[0])}/>
                             </div>
                         </div>
 
                         <div className='row w-100'>
                             <div className='col-lg-2'>
-                                <h5 className='ps-5 ms-3'>Image 5:&nbsp;</h5>
+                                <h5 className='ps-5 ms-3'>Image5:&nbsp;</h5>
                             </div>
                             <div className='col-lg-10'>
-                                <input {...register("image5", { required: true })} type="file" onChange={e => setImage5(e.target.files[0])}/>
-                                {errors.image5?.type === 'required' && "Image is required"}
+                                <input {...register("image5")} type="file" onChange={e => setImage5(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image6:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image6")} type="file" onChange={e => setImage6(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image7:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image7")} type="file" onChange={e => setImage7(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image8:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image8")} type="file" onChange={e => setImage8(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image9:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image9")} type="file" onChange={e => setImage9(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image10:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image10")} type="file" onChange={e => setImage10(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image11:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image11")} type="file" onChange={e => setImage11(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image12:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image12")} type="file" onChange={e => setImage12(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image13:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image13")} type="file" onChange={e => setImage13(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image14:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image14")} type="file" onChange={e => setImage14(e.target.files[0])}/>
+                            </div>
+                        </div>
+
+                        <div className='row w-100'>
+                            <div className='col-lg-2'>
+                                <h5 className='ps-5 ms-3'>Image15:&nbsp;</h5>
+                            </div>
+                            <div className='col-lg-10'>
+                                <input {...register("image15")} type="file" onChange={e => setImage15(e.target.files[0])}/>
                             </div>
                         </div>
 
@@ -143,7 +243,6 @@ const GalleryFormFinal = () => {
                         </div>
                         <button className='mt-3 btn btn-info'>Submit</button>
                     </form>
-            </div>
             </div>
             
         </div>

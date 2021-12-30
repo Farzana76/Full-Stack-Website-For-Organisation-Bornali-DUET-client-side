@@ -44,6 +44,7 @@ const Books = () => {
                         <tr>
                         <th>Book Title</th>
                         <th>Book Writer</th>
+                        <th>Book PDF</th>
                         </tr>
                     </thead>
                     <tbody>

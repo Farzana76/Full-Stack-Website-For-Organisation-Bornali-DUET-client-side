@@ -46,7 +46,7 @@ const useFirebase = () => {
                 // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
                 setError('');
 
-                const res = oldUser.find(ou => ou.email === user.email );
+                const res = oldUser?.find(ou => ou.email === user.email );
                 if(res === undefined){
                     history.replace('/phoneLogin');
                 }

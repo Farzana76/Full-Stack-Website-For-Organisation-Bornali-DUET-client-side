@@ -31,6 +31,8 @@ const AddBook = () => {
                             <input {...register("writer", { required: true })} placeholder="Book Writer" className='w-75'/>
                             {errors.writer?.type === 'required' && "Book Writer is required"}
 
+                            <input {...register("link")} placeholder="Book PDF Link" className='w-75'/>
+
                             <input {...register("quantity", { required: true })} placeholder="Book Quantity" className='w-75'/>
                             {errors.quantity?.type === 'required' && "Book Quantity is required"}
 

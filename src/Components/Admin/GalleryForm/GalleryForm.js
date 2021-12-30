@@ -4,6 +4,7 @@ import useAuth from '../../../hooks/useAuth';
 import Dashboard from '../../Dashboard/Dashboard/Dashboard';
 import ImageGalleryForm from './ImageGalleryForm/ImageGalleryForm';
 import VideoGalleryForm from './VideoGalleryForm/VideoGalleryForm';
+import GalleryFormFinal from './GalleryFormFinal';
 
 const GalleryForm = () => {
     const { user, loading } = useAuth();
@@ -24,9 +25,9 @@ const GalleryForm = () => {
                     }
 
                 <div className="w-75 m-auto mt-5 border rounded mb-3 border-info add-service">
-                    <Tabs defaultActiveKey="imageGalleryForm" id="uncontrolled-tab-example">
-                        <Tab eventKey="imageGalleryForm" title="Add Image Gallery" className="bg-white">
-                            <ImageGalleryForm></ImageGalleryForm>
+                    <Tabs defaultActiveKey="addEvent" id="uncontrolled-tab-example">
+                        <Tab eventKey="addEvent" title="Add Image Gallery" className="bg-white">
+                            <GalleryFormFinal></GalleryFormFinal>
                         </Tab>
                         <Tab eventKey="embedVideo" title="Embed Video" className="bg-white">
                             <VideoGalleryForm></VideoGalleryForm>
