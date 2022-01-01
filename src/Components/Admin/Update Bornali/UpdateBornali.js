@@ -7,6 +7,8 @@ import AddMessages from '../AddMessages/AddMessages';
 import AdvisoryCommitteeForm from '../AdvisoryCommitteeForm/AdvisoryCommitteeForm';
 import CurrentMembersForm from '../CurrentPanel/CurrentMembersForm/CurrentMembersForm';
 import PresidentSecretaryForm from '../CurrentPanel/PresidentSecretaryForm/PresidentSecretaryForm';
+import PreviousPresident from '../PreviousPanel/PreviousPresident/PreviousPresident';
+import PreviousSecretary from '../PreviousPanel/PreviousSecretary/PreviousSecretary';
 
 const UpdateBornali = () => {
     const { user, loading } = useAuth();
@@ -30,6 +32,12 @@ const UpdateBornali = () => {
                         </Tab>
                         <Tab eventKey="addCurrentMembers" title="Add Current Members" className="bg-white">
                            <CurrentMembersForm></CurrentMembersForm>
+                        </Tab>
+                        <Tab eventKey="prevPresident" title="Add Previous Presidents" className="bg-white">
+                           <PreviousPresident></PreviousPresident>
+                        </Tab>
+                        <Tab eventKey="prevSec" title="Add Previous Secretaries" className="bg-white">
+                           <PreviousSecretary></PreviousSecretary>
                         </Tab>
                         <Tab eventKey="addmessage" title="Add President's Message" className="bg-white">
                             <AddMessages></AddMessages>

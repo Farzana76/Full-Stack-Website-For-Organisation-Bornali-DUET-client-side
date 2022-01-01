@@ -20,7 +20,7 @@ const Book = (props) => {
                 {element} Download PDF 
                 </a> :
                 <button className='btn btn-secondary' href={link} target="_blank" rel="noreferrer" disabled>
-                {element} No PDF Available 
+                {element} Offline Available
                 </button>
 
             }

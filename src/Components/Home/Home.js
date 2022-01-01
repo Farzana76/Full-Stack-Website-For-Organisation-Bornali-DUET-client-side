@@ -66,7 +66,7 @@ const Home = () => {
                     <hr className="w-25 pt-1"></hr>
                 </div>
                 
-                <h5 className="px-lg-5 mx-5 justify">
+                <h5 className="px-lg-5 mx-lg-5 justify">
                     Bornali is one of the largest student welfare association in Dhaka University Of Engineering & Technology (DUET).  This organization is consisting of the former students of Dhaka Polytechnic Institute (DPI). It established in 2006. Bornali arranges different events (Farewell of outgoing students, fresher reception, Iftar mahfil, Sports events etc) and provides different student welfare services (Digital library, financial assistance for poor members etc) in order to maintain the brotherhood environment in DUET. At present there are around 200 members in Bornali. The inter bonding between the members of Bornali is so strong that are follow-able... 
                     <Link to="/aboutBornali" className="text-decoration-none">
                         see more
@@ -204,7 +204,7 @@ const Home = () => {
                     <h2 className="heading mt-3">About DDAC</h2>
                     <hr className="w-25 pt-1"></hr>
                 </div>
-                <h5 className="px-lg-5 mx-5 justify">
+                <h5 className="px-lg-5 mx-lg-5 justify">
                 Dhaka University of Engineering and Technology (DUET), Gazipur is the only school of diploma engineers to establish itself as an engineer in tackling the challenge of technology dependent globalization. DUET is one of the leading engineering universities in Bangladesh. The sole purpose of DHAKA DUET Admission Coaching (DDAC) is to develop the DUET as a suitable student and to fulfill the dreams of the students.It is the sister concern of BORNALI...
                     <Link to="/aboutDDAC" className="text-decoration-none">
                         see more
@@ -215,7 +215,7 @@ const Home = () => {
                     <h2 className="heading mt-3">About DUET</h2>
                     <hr className="w-25 pt-1"></hr>
                 </div>
-                <h5 className="px-lg-5 mx-5 justify">
+                <h5 className="px-lg-5 mx-lg-5 justify">
                     The University started its operation in 1980 as College of Engineering at its temporary campus at Tejgaon, under the University of Dhaka and offered four years Bachelors degree in Civil Engineering, Electrical and Electronic Engineering, Mechanical Engineering to meet the growing need for advanced engineering education in Bangladesh. After a short span of time, College of Engineering is renamed as Dhaka Engineering College in 1981. Dhaka Engineering College shifted to its present campus at Gazipur City in 1983. Dhaka Engineering College was promoted to Bangladesh Institute of Technology (BIT), Dhaka as a degree awarding Institute by the Government ordinance in 1986 to find solutions to various problems it had been facing since its inception. BIT, Dhaka was changed to a full fledge University as the name “Dhaka University of Engineering and Technology (DUET), Gazipur” since 1st September 2003. University Administration is mostly defined and determined by the University Act (Dhaka University of Engineering & Technology, Gazipur Act, 2003). DUET has ultimately turned into an Institution, which can now boost its commitment to quality engineering education and has earned a good reputation all over the world for the quality of its graduates. Till today, it has produced around 6,300 graduates in different branches. The curricula of DUET address the needs of present and future, through undergraduate and post-graduate programs...
                     <Link to="/aboutDUET" className="text-decoration-none">
                         see more

@@ -14,14 +14,14 @@ const Menu = () => {
     const [oldUser, setOldUser] = useState({});
     // const [findName, setFindName] = useState({});
 
-    useEffect(() => {
-        fetch('https://floating-hamlet-78764.herokuapp.com/users')
-        .then(res => res.json())
-        .then(data => {
-            setOldUser(data);
+    // useEffect(() => {
+    //     fetch('https://floating-hamlet-78764.herokuapp.com/users')
+    //     .then(res => res.json())
+    //     .then(data => {
+    //         setOldUser(data);
             
-        });
-    }, [])
+    //     });
+    // }, [])
 
     
     // const history = useHistory();
@@ -29,11 +29,11 @@ const Menu = () => {
         return <Spinner animation="border" />
     }
     
-    const fn = () => {
-        const res = oldUser.find(ou => ou.email === user.email );
-        console.log(res.name)
-        return res.name;
-    }
+    // const fn = () => {
+    //     const res = oldUser.find(ou => ou.email === user.email );
+    //     console.log(res.name)
+    //     return res.name;
+    // }
     // user.displayName= findName;
     // const handleMyOrder = () => {
     //     history.push(`/myOrders/${user.email}&&${user.displayName}`);
@@ -71,7 +71,9 @@ const Menu = () => {
         <Navbar expand="lg" className="navbar p-0" id="navbar" style={{zIndex: '100', position: "fixed", width: "100%"}}>
             <Container>
                 <Navbar.Brand>
-                    <img src={logo} id="logo" alt="" width="70"/>
+                    <NavLink to="/home">
+                        <img src={logo} id="logo" alt="" width="70"/>
+                    </NavLink>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -173,7 +175,7 @@ const Menu = () => {
                                     }
                         </div>
                         :
-                        <div className="d-flex">
+                        <div className="d-flex align-items-center justify-content-center">
                             <NavLink to="/login" className="items">Login/Register</NavLink>
                         </div>
                        

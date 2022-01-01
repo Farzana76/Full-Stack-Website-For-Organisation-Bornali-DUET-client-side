@@ -1,0 +1,12 @@
+/* media queires */
+@media only screen and (max-width: 1024px) {
+    .add-service{
+       width: 70% !important;
+       margin-left: 80px !important;
+       
+    }
+    .padd{
+        width: 100% !important;
+    }
+    
+}

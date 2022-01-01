@@ -100,7 +100,7 @@ const DetailForm = () => {
                                     <input placeholder="Student ID" defaultValue="" {...register("sid", { required: true })} className='w-100 mb-1 form-control' onChange={e => setSid(e.target.value)}/>
                                     {errors.sid?.type === 'required' && "Student ID is required"}
 
-                                    <input placeholder="Session i.e 2015-2019" defaultValue="" {...register("session", { required: true })} className='w-100 mb-1 form-control' onChange={e => setSession(e.target.value)}/>
+                                    <input placeholder="Admission session i.e 2015-2019" defaultValue="" {...register("session", { required: true })} className='w-100 mb-1 form-control' onChange={e => setSession(e.target.value)}/>
                                     {errors.session?.type === 'required' && "Session is required"}
 
                                     <input placeholder="Department" defaultValue="" {...register("dept", { required: true })} className='w-100 mb-1 form-control' onChange={e => setDept(e.target.value)}/>

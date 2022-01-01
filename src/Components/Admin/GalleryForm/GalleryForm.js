@@ -2,7 +2,6 @@ import React from 'react';
 import { Tab, Tabs } from 'react-bootstrap';
 import useAuth from '../../../hooks/useAuth';
 import Dashboard from '../../Dashboard/Dashboard/Dashboard';
-import ImageGalleryForm from './ImageGalleryForm/ImageGalleryForm';
 import VideoGalleryForm from './VideoGalleryForm/VideoGalleryForm';
 import GalleryFormFinal from './GalleryFormFinal';
 

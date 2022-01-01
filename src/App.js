@@ -45,9 +45,10 @@ import ManageLibrary from './Components/Librarian/ManageLibrary/ManageLibrary';
 import BornaliLibrary from './Components/Admin/BornaliLibrary/BornaliLibrary';
 import MakeLibrarian from './Components/Admin/MakeLibrarian/MakeLibrarian';
 import LibrarianRoute from './Components/Librarian/LibrarianRoute/LibrarianRoute';
-import ImageGalleryForm from './Components/Admin/GalleryForm/ImageGalleryForm/ImageGalleryForm';
 import Videos from './Components/Gallery/VideoGallery/Videos/Videos';
 import AllGallery from './Components/Gallery/AllGallery/AllGallery';
+import PreviousPresident from './Components/Admin/PreviousPanel/PreviousPresident/PreviousPresident';
+import PreviousSecretary from './Components/Admin/PreviousPanel/PreviousSecretary/PreviousSecretary';
 
 function App() {
   return (
@@ -90,9 +91,9 @@ function App() {
                 <Route path="/members">
                   <Members></Members>
                 </Route>
-                <Route path="/jobs">
+                <PrivateRoute path="/jobs">
                   <Jobs></Jobs>
-                </Route>
+                </PrivateRoute>
                 {/* <Route path="/gallery">
                   <GalleryShow></GalleryShow>
                 </Route> */}
@@ -138,14 +139,17 @@ function App() {
                 <AdminRoute path="/addStandingCommittee">
                   <StandingCommitteeForm></StandingCommitteeForm>
                 </AdminRoute>
+                <AdminRoute path="/prevPresident">
+                  <PreviousPresident></PreviousPresident>
+                </AdminRoute>
+                <AdminRoute path="/prevSec">
+                  <PreviousSecretary></PreviousSecretary>
+                </AdminRoute>
                 <AdminRoute path="/addBook">
                   <AddBook></AddBook>
                 </AdminRoute>
                 <AdminRoute path="/manageLib">
                   <ManageLibrary></ManageLibrary>
-                </AdminRoute>
-                <AdminRoute path="/imageGalleryForm">
-                  <ImageGalleryForm></ImageGalleryForm>
                 </AdminRoute>
                 <AdminRoute path="/galleryForm">
                   <GalleryForm></GalleryForm>

@@ -23,3 +23,12 @@
 .swiper-container-3d .swiper-slide-shadow-right {
     background: none;
 }
+
+/* media queires */
+@media only screen and (max-width: 1024px) {
+    .justify{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    
+}

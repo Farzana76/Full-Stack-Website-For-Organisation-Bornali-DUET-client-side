@@ -1,14 +1,19 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import { Link, useLocation, useHistory, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import img from '../../../img/logo.png';
+import { Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faMicrosoft, faYahoo } from '@fortawesome/free-brands-svg-icons';
 import {faArrowLeft, faRegistered} from '@fortawesome/free-solid-svg-icons';
 import './Login.css';
+import Loader from "react-loader-spinner";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 
 const Login = () => {
-    const { signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, signInWithEmail, userEmail, userPassword, error, setUserInfo } = useAuth();
+    const { signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, signInWithEmail, userEmail, userPassword, error, loadOldUser, hudai, setUser, user } = useAuth();
+    const [userFoul, setUserFoul] = useState([]);
+    const [userLoading, setUserLoading] = useState(true);
 
     const element = <FontAwesomeIcon icon={faArrowLeft} />
     const element2 = <FontAwesomeIcon icon={faGoogle} />
@@ -19,14 +24,58 @@ const Login = () => {
     const location = useLocation();
     const history = useHistory();
     const redirect_url = location.state?.from || '/home';
+    console.log("hudai", hudai,"loadOldUser",loadOldUser);
+
+    useEffect(() => {
+        fetch('https://floating-hamlet-78764.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => {
+            setUserLoading(true);
+            console.log("data", data);
+            setUserFoul(data);
+            console.log("userfoul", userFoul);
+        })
+        .finally(() => setUserLoading(false))
+    }, [])
+
+    if (userLoading) {
+        return <Spinner animation="border" />
+    }
+
+    // useEffect(() =>{
+    //     if(hudai){
+    //         if(loadOldUser){
+    //             const destination = location?.state?.from || '/home';
+    //                      history.push(destination);
+    //         }
+    //         else{
+    //             history.push('/phoneLogin');
+    //         }
+    //     }
+        
+    // },[loadOldUser,hudai])
 
 
     const handleGoogleLogin = () => {
         signInUsingGoogle(location, history)
-            // .then(result => {
-            //     // setUserInfo();
-            //     history.push('/phoneLogin');
-            // })
+            .then(result => {
+                setUser(result.user);
+                console.log(result.user.email);
+                console.log(userFoul)
+                const res = userFoul.find(ou => ou.email === result.user.email );
+                console.log(res);
+                    if(res === undefined){
+                        history.push('/phoneLogin');
+                    }
+                    else{
+                        const destination = location?.state?.from || '/home';
+                        history.push(destination);
+                        
+                        // console.log(setFindName);
+                    }
+            // alert("Logged in successfully!");
+            })
+       
     }
 
     const handleMicrosoftLogin = () => {
@@ -50,7 +99,10 @@ const Login = () => {
                     <NavLink to="/home" className="items text-dark">
                         <li className="h5">{element} Home</li>
                     </NavLink>
-                    <img src={img} alt="Bornali logo" className="w-25 mt-5 mx-auto"/>
+                    <NavLink to="/home">
+                        <img src={img} alt="Bornali logo" className="w-25 mt-5 mx-auto"/>
+                    </NavLink>
+                    
                     <h1 className="heading text-dark fw-normal mt-3">Welcome to Bornali</h1>
                     <h5 className="heading text-secondary fst-italic fw-light">A Student Welfare Association of Former Students<br></br> of Dhaka Polytechnic Institute at DUET</h5>
                     <h6 className="heading text-primary mt-5">New member? </h6>

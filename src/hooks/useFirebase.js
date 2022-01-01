@@ -19,11 +19,11 @@ const useFirebase = () => {
     const [findName, setFindName] = useState({});
 
 
-    useEffect(() => {
-        fetch('https://floating-hamlet-78764.herokuapp.com/users')
-        .then(res => res.json())
-        .then(data => setOldUser(data));
-    }, [])
+    // useEffect(() => {
+    //     fetch('https://floating-hamlet-78764.herokuapp.com/users')
+    //     .then(res => res.json())
+    //     .then(data => setOldUser(data));
+    // }, [])
 
 
     const auth = getAuth();
@@ -37,30 +37,31 @@ const useFirebase = () => {
       })
 
     const signInUsingGoogle = (location, history) => {
-        signInWithPopup(auth, googleProvider)
-            .then((result) => {
-                const user = result.user;
-                console.log(oldUser);
-                // console.log(oldUser[0].email);
-                console.log(oldUser.length);
-                // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
-                setError('');
-
-                const res = oldUser?.find(ou => ou.email === user.email );
-                if(res === undefined){
-                    history.replace('/phoneLogin');
-                }
-                else{
-                    setFindName(res.name);
-                    const destination = location?.state?.from || '/home';
-                    history.replace(destination);
+        return signInWithPopup(auth, googleProvider)
+            .finally(() => { setLoading(false) });
+            // .then((result) => {
+            //     const user = result.user;
+            //     console.log(oldUser);
+            //     // console.log(oldUser[0].email);
+            //     console.log(oldUser.length);
+            //     // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
+            //     setError('');
+            //     history.replace('/phoneLogin');
+            //     // const res = oldUser.find(ou => ou.email === user.email );
+            //     // if(res === undefined){
+            //     //     history.push('/phoneLogin');
+            //     // }
+            //     // else{
+            //     //     setFindName(res.name);
+            //     //     const destination = location?.state?.from || '/home';
+            //     //     history.push(destination);
                     
-                    // console.log(setFindName);
-                }
+            //     //     // console.log(setFindName);
+            //     // }
                 
-            }).catch((error) => {
-                setError(error.message);
-            }).finally(() => { setLoading(false) });
+            // }).catch((error) => {
+            //     setError(error.message);
+            // }).finally(() => { setLoading(false) });
     }
 
     const signInUsingMicrosoft = () => {
@@ -273,7 +274,8 @@ const useFirebase = () => {
     }
 
     return { 
-        user, 
+        user,
+        setUser,
         error, 
         loading, 
         findName,

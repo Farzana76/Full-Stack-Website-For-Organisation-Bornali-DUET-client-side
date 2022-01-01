@@ -9,6 +9,7 @@ import { convertToRaw } from 'draft-js';
 import draftToHtml from 'draftjs-to-html';
 import parse from 'html-react-parser';
 import tinymce from 'tinymce/tinymce';
+import './JobPostForm.css'
 
 // const ReactDOMServer = require('react-dom/server');
 // const HtmlToReactParser = require('html-to-react').Parser;
@@ -131,10 +132,10 @@ const JobPostForm = () => {
                         My dashboard</h2>
 
                     }
-                    <div className="w-50 m-auto p-3 border rounded mb-3 border-info add-service">
+                    <div className="w-50 mx-auto p-3 border rounded mb-3 border-info add-service">
                         <h1 className="mb-3 heading fw-normal">Job Posting Form</h1>
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <input {...register("title", { required: true })} placeholder="Job Title" className='w-75' onChange={e => setTitle(e.target.value)}/>
+                        <form onSubmit={handleSubmit(onSubmit)} className=''>
+                            <input {...register("title", { required: true })} placeholder="Job Title" className='w-75 padd' onChange={e => setTitle(e.target.value)}/>
                             {errors.title?.type === 'required' && "Job title is required"}
 
                             {/* <textarea id="mytextarea" name="desc"></textarea>
@@ -164,23 +165,23 @@ const JobPostForm = () => {
                                 }}
                             />
                             <button onClick={log}>Log editor content</button> */}
-                            <textarea defaultValue="" {...register("context")} placeholder="Job Context" className='w-75'/>
+                            <textarea defaultValue="" {...register("context")} placeholder="Job Context" className='w-75 padd'/>
                                
-                            <textarea defaultValue="" {...register("responsibilities")} placeholder="Job Responsibilities" className='w-75'/>
+                            <textarea defaultValue="" {...register("responsibilities")} placeholder="Job Responsibilities" className='w-75 padd'/>
 
-                            <textarea defaultValue="" {...register("education")} placeholder="Educational Requirements" className='w-75'/>
+                            <textarea defaultValue="" {...register("education")} placeholder="Educational Requirements" className='w-75 padd'/>
 
-                            <textarea defaultValue="" {...register("experience")} placeholder="Experience Requirements" className='w-75'/>
+                            <textarea defaultValue="" {...register("experience")} placeholder="Experience Requirements" className='w-75 padd'/>
 
-                            <textarea defaultValue="" {...register("additional")} placeholder="Additional Requirements" className='w-75'/>
+                            <textarea defaultValue="" {...register("additional")} placeholder="Additional Requirements" className='w-75 padd'/>
 
-                            <textarea defaultValue="" {...register("location")} placeholder="Job location" className='w-75'/>
+                            <textarea defaultValue="" {...register("location")} placeholder="Job location" className='w-75 padd'/>
 
-                            <textarea defaultValue="" {...register("salary")} placeholder="Salary" className='w-75'/>
+                            <textarea defaultValue="" {...register("salary")} placeholder="Salary" className='w-75 padd'/>
 
-                            <input defaultValue={user.displayName} {...register("postedBy")} className='w-75' readOnly/>
+                            <input defaultValue={user.displayName} {...register("postedBy")} className='w-75 padd' readOnly/>
 
-                            <input defaultValue={date} {...register("dated")} className='w-75' readOnly/>
+                            <input defaultValue={date} {...register("dated")} className='w-75 padd' readOnly/>
                                     
                             <input type="submit" className="btn text-light heading btn-lg w-50 fw-normal" style={{backgroundColor: 'rgb(59, 96, 133)'}} value="Post Job"/>
                         </form>

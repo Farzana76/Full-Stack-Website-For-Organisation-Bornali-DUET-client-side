@@ -1,27 +1,30 @@
 import React, { useState } from 'react';
 import { Button, Card, Col, Modal } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 
 const Gallery = (props) => {
-    const {name, session, image1, image2, image3, image4, image5, msg} = props.event;
+    const {name, session, image1, image2, image3, image4, image5, link, msg} = props.event;
     const [show, setShow] = useState(false);
     const [show1, setShow1] = useState(false);
     const [show2, setShow2] = useState(false);
     const [show3, setShow3] = useState(false);
     const [show4, setShow4] = useState(false);
+    console.log(msg)
 
+    const element = <FontAwesomeIcon icon={faArrowRight} />
     return (
         <div className='mb-5 pb-5'>
             <Col className='mb-5 pb-5'> 
                 <Card border='' className="bg-transparent border-0" style={{minHeight: '400px'}}>
                     <Card.Title>
-                        <h2 className="text-center mb-0 mt-1">{name}</h2>
+                        <h1 className="text-center mb-0 mt-1 heading text-dark">{name}</h1>
                         <h4 className="text-center">
                             ({session})
                         </h4>
                         </Card.Title>
-                        <Card.Text className='px-5'>
-                        {msg}
-                    </Card.Text>
+                        <h6>{msg}</h6>
+                        
                 <div className='d-flex flex-wrap'>
                     <Button variant="" onClick={() => setShow(true)}>
                         <img src={`data:image/png;base64,${image1}`} alt="" width="250px" height="200px" className='m-2'/>
@@ -128,6 +131,10 @@ const Gallery = (props) => {
                             <img src={`data:image/png;base64,${image5}`} alt="" width="100%" height="100%" className='px-5'/>
                         </Modal.Body>
                     </Modal>
+
+                    <Button variant="" ><a className='btn btn-light m-2 d-flex align-items-center justify-content-center' href={link} target="_blank" rel="noreferrer" style={{width: "250px", height:"200px"}}>
+                        <h3 className='heading'>See More {element}</h3> 
+                    </a></Button>
                     {/* <img src={`data:image/png;base64,${image1}`} alt="" width="250px" height="200px" className='m-3'/>
                     <img src={`data:image/png;base64,${image2}`} alt="" width="250px" height="200px" className='m-3'/>
                     <img src={`data:image/png;base64,${image3}`} alt="" width="250px" height="200px" className='m-3'/>
