@@ -12,22 +12,33 @@ const element = <FontAwesomeIcon icon={faUser} />
 const Menu = () => {
     const { user, logOut, loading, admin, librarian, findName} = useAuth();
     const [oldUser, setOldUser] = useState({});
-    // const [findName, setFindName] = useState({});
+    const [userLoading, setUserLoading] = useState(true);
 
-    // useEffect(() => {
-    //     fetch('https://floating-hamlet-78764.herokuapp.com/users')
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setOldUser(data);
-            
-    //     });
-    // }, [])
+
+    useEffect(() => {
+        fetch('https://floating-hamlet-78764.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => {
+            setUserLoading(true);
+            console.log("data", data);
+            setOldUser(data);
+            console.log("oldUser", oldUser);
+        })
+        .finally(() => setUserLoading(false))
+    }, [])
+
+    if (userLoading) {
+        return <Spinner animation="border" />
+    }
+
+    const res = oldUser.find(ou => ou.email === user.email );
+
 
     
     // const history = useHistory();
-    if (loading) {
-        return <Spinner animation="border" />
-    }
+    // if (loading) {
+    //     return <Spinner animation="border" />
+    // }
     
     // const fn = () => {
     //     const res = oldUser.find(ou => ou.email === user.email );
@@ -117,7 +128,7 @@ const Menu = () => {
                     </Dropdown>
                     
                     
-                    {user.email ?
+                    {res ?
                         <div className="">
                             {admin ?
                                     <Dropdown className="dropdown b-0 items">

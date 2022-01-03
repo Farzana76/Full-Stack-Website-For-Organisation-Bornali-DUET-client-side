@@ -4,6 +4,7 @@ import useAuth from '../../../hooks/useAuth';
 import Dashboard from '../../Dashboard/Dashboard/Dashboard';
 import VideoGalleryForm from './VideoGalleryForm/VideoGalleryForm';
 import GalleryFormFinal from './GalleryFormFinal';
+import ImageGalleryForm from './ImageGalleryForm/ImageGalleryForm';
 
 const GalleryForm = () => {
     const { user, loading } = useAuth();
@@ -27,6 +28,9 @@ const GalleryForm = () => {
                     <Tabs defaultActiveKey="addEvent" id="uncontrolled-tab-example">
                         <Tab eventKey="addEvent" title="Add Image Gallery" className="bg-white">
                             <GalleryFormFinal></GalleryFormFinal>
+                        </Tab>
+                        <Tab eventKey="imageGalleryForm" title="Add Image Gallery new" className="bg-white">
+                            <ImageGalleryForm></ImageGalleryForm>
                         </Tab>
                         <Tab eventKey="embedVideo" title="Embed Video" className="bg-white">
                             <VideoGalleryForm></VideoGalleryForm>

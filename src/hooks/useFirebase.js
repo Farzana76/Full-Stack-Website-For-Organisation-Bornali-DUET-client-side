@@ -202,7 +202,7 @@ const useFirebase = () => {
                     // saveUser(user.email, user.name, user.phoneNumber, 'PUT');
                     setUser(res.user);
                     setError(null);
-                    history.push('/detailForm');
+                    history.push('/detailFormNew');
                     // ...
                 }).catch((error) => {
                     // User couldn't sign in (bad verification code?)

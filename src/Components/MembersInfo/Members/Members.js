@@ -27,7 +27,7 @@ const Members = () => {
 
     const handleSearch = event => {
         const searchText = event.target.value;
-        const matchedMembers = members.filter(member => member.name.toLowerCase().includes(searchText.toLowerCase()) || member.blood.toLowerCase().includes(searchText.toLowerCase()));
+        const matchedMembers = members.filter(member => member.displayName.toLowerCase().includes(searchText.toLowerCase()) || member.bloodGroup.toLowerCase().includes(searchText.toLowerCase()));
         setDisplayMembers(matchedMembers);
     }
     return (

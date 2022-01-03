@@ -49,6 +49,7 @@ import Videos from './Components/Gallery/VideoGallery/Videos/Videos';
 import AllGallery from './Components/Gallery/AllGallery/AllGallery';
 import PreviousPresident from './Components/Admin/PreviousPanel/PreviousPresident/PreviousPresident';
 import PreviousSecretary from './Components/Admin/PreviousPanel/PreviousSecretary/PreviousSecretary';
+import DetailFormNew from './Components/Register/DetailForm/DetailFormNew';
 
 function App() {
   return (
@@ -76,6 +77,9 @@ function App() {
                 <Route path="/detailForm">
                   <DetailForm></DetailForm>
                 </Route>
+                <Route path="/detailFormNew">
+                  <DetailFormNew></DetailFormNew>
+                </Route>
                 <Route path="/aboutBornali">
                   <AboutBornali></AboutBornali>
                 </Route>
@@ -88,9 +92,9 @@ function App() {
                 <PrivateRoute path="/dashboard">
                   <Dashboard></Dashboard>
                 </PrivateRoute>
-                <Route path="/members">
+                <PrivateRoute path="/members">
                   <Members></Members>
-                </Route>
+                </PrivateRoute>
                 <PrivateRoute path="/jobs">
                   <Jobs></Jobs>
                 </PrivateRoute>

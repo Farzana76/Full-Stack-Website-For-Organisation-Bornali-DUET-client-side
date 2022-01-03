@@ -121,7 +121,7 @@ const AboutBornali = () => {
                             </Row> 
                         </div>
                         <div className='col-lg-6 col-sm-12'>
-                            <Row xs={1} md={1} lg={1} className="g-4 pb-5 pt-3">
+                            <Row xs={1} md={1} lg={1} className="g-4 pb-5 pt-3 ps-lg-5">
                                 {
                                     prevSec.map(p => <PrevSec
                                         key = {p._id}

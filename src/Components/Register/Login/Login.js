@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import { Link, useLocation, useHistory, NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import img from '../../../img/logo.png';
-import { Spinner } from 'react-bootstrap';
+import { Button, Row, Spinner } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGoogle, faMicrosoft, faYahoo } from '@fortawesome/free-brands-svg-icons';
 import {faArrowLeft, faRegistered} from '@fortawesome/free-solid-svg-icons';
@@ -23,8 +23,6 @@ const Login = () => {
 
     const location = useLocation();
     const history = useHistory();
-    const redirect_url = location.state?.from || '/home';
-    console.log("hudai", hudai,"loadOldUser",loadOldUser);
 
     useEffect(() => {
         fetch('https://floating-hamlet-78764.herokuapp.com/users')
