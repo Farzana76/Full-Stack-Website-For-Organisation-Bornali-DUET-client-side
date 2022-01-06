@@ -1,33 +1,27 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import { Button, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { NavLink, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import img from '../../../img/logo.png';
-import './DetailFormNew.css'
 
-const DetailFormNew = () => {
+const UserUpdateProfile = () => {
     const { error, user, getEmail, userRegistration, getPassword, signInUsingGoogle } = useAuth();
     // const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const [showSpin, setShowSpin] = useState(true);
+    const [members, setMembers] = useState([]);
 
-const [productData, setProductData] = useState({
-    displayName: '',
-    dept: '',
-    session: '',
-    imageUrl: '',
-    phone: user.phoneNumber,
-    email: user.email,
-    sid: '',
-    bloodGroup: '',
-    address: '',
-    city: '',
-    company: '',
-    position: ''
-});
+const [productData, setProductData] = useState();
 
     const history = useHistory();
+
+    useEffect(() => {
+        fetch("https://floating-hamlet-78764.herokuapp.com/users")
+        .then(res => res.json())
+        .then(data => setMembers(data))
+    }, [])
 
     const handleSubmit = e => {
         console.log(productData);
@@ -97,6 +91,7 @@ const [productData, setProductData] = useState({
                     <div className="text-danger" style={{ height: "50px" }}>
                         {error}
                     </div>
+                    {members.filter(member => member.email === user.email).map(o => (
                     <form>
 
                             <h4>Personal Details</h4>
@@ -109,12 +104,12 @@ const [productData, setProductData] = useState({
                                     </div>
                                     {!showSpin && <div><Spinner></Spinner><p className="text-center">Please Wait.! Image Uploading...</p></div>}
 
-                                    <input placeholder="Student ID" name="sid" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange} required/>
+                                    <input placeholder="Student ID" name="sid" className='w-100 mb-1 form-control' defaultValue={o.sid} onChange={handleProductPropertyChange} required/>
 
-                                    <input placeholder="Admission session i.e 2016-2017" name="session" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange} required/>
+                                    <input defaultValue={o.session} placeholder="Admission session i.e 2016-2017" name="session" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange} required/>
 
                                     <div className='dropdown1'>
-                                        <select name="dept" className="form-control mb-1" onChange={handleProductPropertyChange}>
+                                        <select name="dept" defaultValue={o.dept} className="form-control mb-1" onChange={handleProductPropertyChange}>
                                             <option value="N/A">Select department</option>
                                             <option value="CSE">CSE</option>
                                             <option value="EEE">EEE</option>
@@ -130,7 +125,7 @@ const [productData, setProductData] = useState({
                                     </div>
 
                                     <div className='dropdown1'>
-                                        <select name="bloodGroup" className="form-control" onChange={handleProductPropertyChange}>
+                                        <select name="bloodGroup" defaultValue={o.bloodGroup} className="form-control" onChange={handleProductPropertyChange}>
                                             <option value="N/A">Select blood group</option>
                                             <option value="A+">A+</option>
                                             <option value="B+">B+</option>
@@ -146,15 +141,15 @@ const [productData, setProductData] = useState({
                                    
                                 </div>
                                 <div className='col-lg-6 col-sm-12'>
-                                <input placeholder='Full Name' name="displayName" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+                                <input placeholder='Full Name' name="displayName" defaultValue={o.displayName} className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
 
-                                <input name="email" defaultValue={user.email} className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+                                <input name="email" defaultValue={o.email} className='w-100 mb-1 form-control'/>
 
-                                <input name="phone" defaultValue={user.phoneNumber} readOnly className='w-100 mb-1 form-control'/>
+                                <input name="phone" defaultValue={o.phone} readOnly className='w-100 mb-1 form-control'/>
 
-                                <input placeholder='Present Address' name="address" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+                                <input defaultValue={o.address} placeholder='Present Address' name="address" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
 
-                                <input placeholder='City' name="city" className='w-100 form-control' onChange={handleProductPropertyChange}/>
+                                <input defaultValue={o.city} placeholder='City' name="city" className='w-100 form-control' onChange={handleProductPropertyChange}/>
                                 </div>
                             </div>
 
@@ -162,60 +157,21 @@ const [productData, setProductData] = useState({
                             <hr></hr>
                             <div className='row mb-5'>
                                 <div className='col-lg-6 col-sm-12'>
-                                    <input placeholder="Organization" name="company" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+                                    <input defaultValue={o.company} placeholder="Organization" name="company" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
                                 </div>
                                 <div className='col-lg-6 col-sm-12'>
-                                    <input placeholder="Position" name="position" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+                                    <input defaultValue={o.position} placeholder="Position" name="position" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
                                 </div>
                             </div>
-                            <Button variant="primary" as="input" type="reset" value="Submit" block onClick={handleSubmit} />
-                        </form>
+                            <Button variant="primary" as="input" type="reset" value="Update" block onClick={handleSubmit} />
+                        </form>))}
                 </div>
             </div>
             </div>
             <h6 className="heading fw-normal border-top">&copy; Developed by DazingDevs</h6>
         </div>
         </div>
-
-
-
-
-        // <div>
-        //     {!showSpin && <div><Spinner></Spinner><p className="text-center">Please Wait.! Image Uploading...</p></div>}
-        //     <div>
-        //         <h2>Add Product</h2>
-        //         <form className="mt-3 form-style">
-        //             <div className="row">
-        //                 <label htmlFor="productName" className="col-sm-12 col-md-6 col-lg-6">
-        //                     Product Name
-        //                         <hr></hr>
-        //                     <input className="col-sm-12 col-md-10 col-lg-10" name="productName" placeholder="e.x- milk,chips,egg" type="text" onChange={handleProductPropertyChange} />
-        //                 </label>
-        //                 <label className="col-sm-12 col-md-6 col-lg-6">
-        //                     Weight
-        //                      <hr></hr>
-        //                     <input className="col-sm-12 col-md-10 col-lg-10" name="productWight" placeholder="e.x- 1kg" type="text" onChange={handleProductPropertyChange} />
-        //                 </label>
-        //             </div>
-        //             <div className="row mt-2">
-        //                 <label className="col-sm-12 col-md-6 col-lg-6">
-        //                     Add Price
-        //                         <hr></hr>
-        //                     <input className="col-sm-12 col-md-10 col-lg-10" name="productPrice" placeholder="e.x- 10$" type="number" onChange={handleProductPropertyChange} />
-        //                 </label>
-        //                 <label className="col-sm-12 col-md-6 col-lg-6">
-        //                     Add Photo
-        //                      <hr></hr>
-        //                     <input className="col-sm-12 col-md-10 col-lg-10" type="file" onChange={handleProductImageChange} />
-        //                 </label>
-        //             </div>
-        //             <br />
-        //             <Button variant="success" as="input" type="reset" value="Save" block onClick={handleSubmit} />
-        //         </form>
-        //     </div>
-
-        // </div>
     );
 };
 
-export default DetailFormNew;
+export default UserUpdateProfile;

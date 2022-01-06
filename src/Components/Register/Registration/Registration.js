@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 // import { useHistory } from 'react-router';
@@ -7,9 +7,12 @@ import img from '../../../img/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faArrowLeft, faSignInAlt} from '@fortawesome/free-solid-svg-icons';
 import { faGoogle, faMicrosoft, faYahoo } from '@fortawesome/free-brands-svg-icons';
+import { Spinner } from 'react-bootstrap';
 
 const Registration = () => {
-    const { error, getName, getEmail, userRegistration, getPassword, signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo } = useAuth();
+    const { error, getName, getEmail, userRegistration, getPassword, signInUsingGoogle, signInUsingMicrosoft, signInUsingYahoo, setUser } = useAuth();
+    const [userFoul, setUserFoul] = useState([]);
+    const [userLoading, setUserLoading] = useState(true);
 
     const element = <FontAwesomeIcon icon={faArrowLeft} />
     const element2 = <FontAwesomeIcon icon={faGoogle} />
@@ -21,12 +24,43 @@ const Registration = () => {
     const history = useHistory();
     const redirect_url = location.state?.from || '/home';
 
+    useEffect(() => {
+        fetch('https://floating-hamlet-78764.herokuapp.com/users')
+        .then(res => res.json())
+        .then(data => {
+            setUserLoading(true);
+            console.log("data", data);
+            setUserFoul(data);
+            console.log("userfoul", userFoul);
+        })
+        .finally(() => setUserLoading(false))
+    }, [])
+
+
+    if (userLoading) {
+        return <Spinner animation="border" />
+    }
 
     const handleGoogleLogin = () => {
-        signInUsingGoogle()
+        signInUsingGoogle(location, history)
             .then(result => {
-                history.push('/phoneLogin');
+                setUser(result.user);
+                console.log(result.user.email);
+                console.log(userFoul)
+                const res = userFoul.find(ou => ou.email === result.user.email );
+                console.log(res);
+                    if(res === undefined){
+                        history.push('/phoneLogin');
+                    }
+                    else{
+                        const destination = location?.state?.from || '/home';
+                        history.push(destination);
+                        
+                        // console.log(setFindName);
+                    }
+            // alert("Logged in successfully!");
             })
+       
     }
 
     const handleMicrosoftLogin = () => {
@@ -39,7 +73,21 @@ const Registration = () => {
     const handleYahooLogin = () => {
         signInUsingYahoo()
             .then(result => {
-                history.push('/phoneLogin');
+                setUser(result.user);
+                console.log(result.user.email);
+                console.log(userFoul)
+                const res = userFoul.find(ou => ou.email === result.user.email );
+                console.log(res);
+                    if(res === undefined){
+                        history.push('/phoneLogin');
+                    }
+                    else{
+                        const destination = location?.state?.from || '/home';
+                        history.push(destination);
+                        
+                        // console.log(setFindName);
+                    }
+            // alert("Logged in successfully!");
             })
     }
 

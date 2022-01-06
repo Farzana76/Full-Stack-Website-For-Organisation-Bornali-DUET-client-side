@@ -11,7 +11,7 @@ const element = <FontAwesomeIcon icon={faUser} />
 
 const Menu = () => {
     const { user, logOut, loading, admin, librarian, findName} = useAuth();
-    const [oldUser, setOldUser] = useState({});
+    const [oldUser, setOldUser] = useState([]);
     const [userLoading, setUserLoading] = useState(true);
 
 
@@ -32,51 +32,6 @@ const Menu = () => {
     }
 
     const res = oldUser.find(ou => ou.email === user.email );
-
-
-    
-    // const history = useHistory();
-    // if (loading) {
-    //     return <Spinner animation="border" />
-    // }
-    
-    // const fn = () => {
-    //     const res = oldUser.find(ou => ou.email === user.email );
-    //     console.log(res.name)
-    //     return res.name;
-    // }
-    // user.displayName= findName;
-    // const handleMyOrder = () => {
-    //     history.push(`/myOrders/${user.email}&&${user.displayName}`);
-    // }
-
-    // window.onscroll = function() {scrollFunction()};
-
-    // var nav = document.getElementById("navbar");
-    
-    // function scrollFunction() {
-    // if(typeof nav !== 'undefined' && nav !== null){
-    //     if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-    //         // document.getElementById("navbar").style.backgroundColor = "rgb(170, 212, 247)";
-    //         document.getElementById("navbar").style.position = "fixed";
-    //         document.getElementById("navbar").style.width = "100%";
-    //         document.getElementById("navbar").style.padding = "0px 0px";
-    //         document.getElementById("logo").style.width = "50px";
-    //         // document.getElementById("items").style.fontSize = "20px";
-    //     } else{
-    //         document.getElementById("logo").style.width = "70px";
-    //         // document.getElementById("navbar").style.padding = "0px 0px";
-    //         // document.getElementById("items").style.fontSize = "25px";
-    //         // document.getElementById("navbar").style.color = "#ffffff";
-    //         // document.getElementById("navbar").style.fontSize = "25px";
-    //         // document.getElementById("navbar").style.background = "transparent";
-    //     }
-    // }}
-
-    // const out = () => {
-    //     const find = oldUser.find(ou => ou.email === user.email);
-    //     setFindName(find);
-    // }
     
     return (
         <Navbar expand="lg" className="navbar p-0" id="navbar" style={{zIndex: '100', position: "fixed", width: "100%"}}>
@@ -140,7 +95,7 @@ const Menu = () => {
 
                                     <Dropdown.Menu>
                                         <Dropdown.Item className='text-muted'>{user.displayName}</Dropdown.Item>
-                                        <NavLink to="/makeAdmin" className="text-decoration-none">
+                                        <NavLink to="/allMembers" className="text-decoration-none">
                                             <Dropdown.Item href="#/action-2">Dashboard</Dropdown.Item>
                                         </NavLink>
                                         

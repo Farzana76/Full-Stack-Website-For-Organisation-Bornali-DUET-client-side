@@ -50,6 +50,8 @@ import AllGallery from './Components/Gallery/AllGallery/AllGallery';
 import PreviousPresident from './Components/Admin/PreviousPanel/PreviousPresident/PreviousPresident';
 import PreviousSecretary from './Components/Admin/PreviousPanel/PreviousSecretary/PreviousSecretary';
 import DetailFormNew from './Components/Register/DetailForm/DetailFormNew';
+import AllMembers from './Components/Admin/AllMembers/AllMembers';
+import UserUpdateProfile from './Components/Dashboard/UserUpdateProfile/UserUpdateProfile';
 
 function App() {
   return (
@@ -98,6 +100,9 @@ function App() {
                 <PrivateRoute path="/jobs">
                   <Jobs></Jobs>
                 </PrivateRoute>
+                <PrivateRoute path="/userUpdateProfile">
+                  <UserUpdateProfile></UserUpdateProfile>
+                </PrivateRoute>
                 {/* <Route path="/gallery">
                   <GalleryShow></GalleryShow>
                 </Route> */}
@@ -118,6 +123,9 @@ function App() {
                 </PrivateRoute>
                 <AdminRoute path="/addMessage">
                   <AddMessages></AddMessages>
+                </AdminRoute>
+                <AdminRoute path="/allMembers">
+                  <AllMembers></AllMembers>
                 </AdminRoute>
                 <AdminRoute path="/makeAdmin">
                   <MakeAdmin></MakeAdmin>

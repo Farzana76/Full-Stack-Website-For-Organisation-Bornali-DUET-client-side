@@ -40,20 +40,6 @@ const Login = () => {
         return <Spinner animation="border" />
     }
 
-    // useEffect(() =>{
-    //     if(hudai){
-    //         if(loadOldUser){
-    //             const destination = location?.state?.from || '/home';
-    //                      history.push(destination);
-    //         }
-    //         else{
-    //             history.push('/phoneLogin');
-    //         }
-    //     }
-        
-    // },[loadOldUser,hudai])
-
-
     const handleGoogleLogin = () => {
         signInUsingGoogle(location, history)
             .then(result => {
@@ -86,8 +72,28 @@ const Login = () => {
     const handleYahooLogin = () => {
         signInUsingYahoo()
             .then(result => {
-                history.push('/phoneLogin');
+                setUser(result.user);
+                console.log(result.user.email);
+                console.log(userFoul)
+                const res = userFoul.find(ou => ou.email === result.user.email );
+                console.log(res);
+                    if(res === undefined){
+                        history.push('/phoneLogin');
+                    }
+                    else{
+                        const destination = location?.state?.from || '/home';
+                        history.push(destination);
+                        
+                        // console.log(setFindName);
+                    }
+            // alert("Logged in successfully!");
             })
+    }
+
+    const handleLoginSubmit = e => {
+
+        signInWithEmail(history);
+        e.preventDefault();
     }
 
     return (
@@ -137,7 +143,7 @@ const Login = () => {
                         placeholder="Password"
                         />
                         <input
-                        onClick={signInWithEmail}
+                        onClick={handleLoginSubmit}
                         className="btn btn-primary mb-3 heading btn-lg text-light fw-normal"
                         type="submit"
                         value="Login"

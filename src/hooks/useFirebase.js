@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, sendEmailVerification, signOut, RecaptchaVerifier, signInWithPhoneNumber, OAuthProvider } from "firebase/auth";
 import initializeAuthentication from '../Firebase/firebase.init.js';
+import { useHistory } from 'react-router-dom';
 
 initializeAuthentication();
 
@@ -25,6 +26,7 @@ const useFirebase = () => {
     //     .then(data => setOldUser(data));
     // }, [])
 
+    const history = useHistory();
 
     const auth = getAuth();
     const googleProvider = new GoogleAuthProvider();
@@ -39,29 +41,6 @@ const useFirebase = () => {
     const signInUsingGoogle = (location, history) => {
         return signInWithPopup(auth, googleProvider)
             .finally(() => { setLoading(false) });
-            // .then((result) => {
-            //     const user = result.user;
-            //     console.log(oldUser);
-            //     // console.log(oldUser[0].email);
-            //     console.log(oldUser.length);
-            //     // saveUser(user.email, user.displayName, user.phoneNumber, 'PUT');
-            //     setError('');
-            //     history.replace('/phoneLogin');
-            //     // const res = oldUser.find(ou => ou.email === user.email );
-            //     // if(res === undefined){
-            //     //     history.push('/phoneLogin');
-            //     // }
-            //     // else{
-            //     //     setFindName(res.name);
-            //     //     const destination = location?.state?.from || '/home';
-            //     //     history.push(destination);
-                    
-            //     //     // console.log(setFindName);
-            //     // }
-                
-            // }).catch((error) => {
-            //     setError(error.message);
-            // }).finally(() => { setLoading(false) });
     }
 
     const signInUsingMicrosoft = () => {
@@ -132,7 +111,7 @@ const useFirebase = () => {
             saveUser(email, name, user.phoneNumber, 'POST');
             verifyEmail();
             setError('');
-            alert("Registration Successful!");
+            // alert("Registration Successful!");
             history.replace('/phoneLogin');
 
             setUserInfo();
@@ -142,8 +121,8 @@ const useFirebase = () => {
         })
     }
     
-    const signInWithEmail = e => {
-        e.preventDefault();
+    const signInWithEmail = (history) => {
+        // e.preventDefault();
         if(useremail.length === 0){
             setError("Please give your email")
             return;
@@ -153,15 +132,16 @@ const useFirebase = () => {
             return;
         }
         signInWithEmailAndPassword(auth, useremail, userpassword)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-            setUser(result.user)
-            setError('');
-        })
-        .catch((error) => {
-            setError(error.message);
-        })
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setUser(result.user)
+                setError('');
+                history.replace('/home')
+            })
+            .catch((error) => {
+                setError(error.message);
+            })
     }
 
       const verifyEmail = () => {

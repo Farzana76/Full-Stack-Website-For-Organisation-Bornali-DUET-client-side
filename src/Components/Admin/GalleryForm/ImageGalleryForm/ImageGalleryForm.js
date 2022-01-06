@@ -13,7 +13,12 @@ const ImageGalleryForm = () => {
 const [productData, setProductData] = useState({
     eventName: '',
     session: '',
-    imageUrl: [],
+    imageUrl: '',
+    imageUrl2: '',
+    imageUrl3: '',
+    imageUrl4: '',
+    imageUrl5: '',
+    link: '',
     desc: ''
 });
 
@@ -50,22 +55,100 @@ const [productData, setProductData] = useState({
     const handleProductImageChange = event => {
         setShowSpin(false);
         console.log(event.target.files[0]);
-        console.log("length", event.target.files.length);
         const imageData = new FormData();
-        imageData.set('key', 'c01893fe74bfd862af43b215adb0d9d1');
-        for (let i = 0; i < event.target.files.length; i++) {
-            imageData.append("image", event.target.files[i]);
-          }
-          console.log("imageData", imageData)
+        imageData.set('key', '2db9680356ab7afbbbca29c97ded20be');
+        imageData.append('image', event.target.files[0]);
+        console.log("imageData", imageData.values())
+        console.log("imageData.getAll image", imageData.getAll("image"))
         axios.post('https://api.imgbb.com/1/upload',
             imageData)
             .then(function (response) {
                 const newProductData = { ...productData };
-                for (let i = 0; i < event.target.files.length; i++) {
-                    newProductData[i].imageUrl = response.data.data.display_url;
-                    console.log(newProductData[i].imageUrl)
-                  }
-                
+                newProductData.imageUrl = response.data.data.display_url;
+                setProductData(newProductData);
+                setShowSpin(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const handleProductImageChange2 = event => {
+        setShowSpin(false);
+        console.log(event.target.files[0]);
+        const imageData2 = new FormData();
+        imageData2.set('key', '2db9680356ab7afbbbca29c97ded20be');
+        imageData2.append('image', event.target.files[0]);
+        console.log("imageData", imageData2.values())
+        console.log("imageData.getAll image", imageData2.getAll("image"))
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData2)
+            .then(function (response) {
+                const newProductData = { ...productData };
+                newProductData.imageUrl2 = response.data.data.display_url;
+                setProductData(newProductData);
+                setShowSpin(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const handleProductImageChange3 = event => {
+        setShowSpin(false);
+        console.log(event.target.files[0]);
+        const imageData3 = new FormData();
+        imageData3.set('key', '2db9680356ab7afbbbca29c97ded20be');
+        imageData3.append('image', event.target.files[0]);
+        console.log("imageData", imageData3.values())
+        console.log("imageData.getAll image", imageData3.getAll("image"))
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData3)
+            .then(function (response) {
+                const newProductData = { ...productData };
+                newProductData.imageUrl3 = response.data.data.display_url;
+                setProductData(newProductData);
+                setShowSpin(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const handleProductImageChange4 = event => {
+        setShowSpin(false);
+        console.log(event.target.files[0]);
+        const imageData4 = new FormData();
+        imageData4.set('key', '2db9680356ab7afbbbca29c97ded20be');
+        imageData4.append('image', event.target.files[0]);
+        console.log("imageData", imageData4.values())
+        console.log("imageData.getAll image", imageData4.getAll("image"))
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData4)
+            .then(function (response) {
+                const newProductData = { ...productData };
+                newProductData.imageUrl4 = response.data.data.display_url;
+                setProductData(newProductData);
+                setShowSpin(true);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
+
+    const handleProductImageChange5 = event => {
+        setShowSpin(false);
+        console.log(event.target.files[0]);
+        const imageData5 = new FormData();
+        imageData5.set('key', '2db9680356ab7afbbbca29c97ded20be');
+        imageData5.append('image', event.target.files[0]);
+        console.log("imageData", imageData5.values())
+        console.log("imageData.getAll image", imageData5.getAll("image"))
+        axios.post('https://api.imgbb.com/1/upload',
+            imageData5)
+            .then(function (response) {
+                const newProductData = { ...productData };
+                newProductData.imageUrl5 = response.data.data.display_url;
                 setProductData(newProductData);
                 setShowSpin(true);
             })
@@ -89,23 +172,28 @@ const [productData, setProductData] = useState({
                         {error}
                     </div>
                     <form enctype="multipart/form-data">
-
-                            <h4>Personal Details</h4>
-                            <hr></hr>
                                 <div className=''>
-                                    <div className='d-flex align-items-center'>
-                                        <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange} multiple/>
+                                    <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange} required/>
+
+                                    <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange2}/>
+
+                                    <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange3}/>
+
+                                    <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange4}/>
+
+                                    <input type="file" className='w-100 mb-1 form-control' onChange={handleProductImageChange5}/>
                                         
-                                    </div>
                                     {!showSpin && <div><Spinner></Spinner><p className="text-center">Please Wait.! Image Uploading...</p></div>}
 
                                     <input placeholder="Event Name" name="eventName" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange} required/>
 
                                     <input placeholder="Event Year" name="session" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange} required/>
 
+                                    <textarea placeholder='Drive Link' name="link" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
+
                                     <textarea placeholder='Description' name="desc" className='w-100 mb-1 form-control' onChange={handleProductPropertyChange}/>
                             </div>
-                            <Button variant="primary" as="input" value="Submit" block onClick={handleSubmit} />
+                            <Button variant="primary" as="input" value="Submit" block onClick={handleSubmit} className='text-white'/>
                         </form>
                 </div>
             </div>

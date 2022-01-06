@@ -34,6 +34,10 @@ const Dashboard = () => {
                 {!admin && !librarian &&
                     <CDBSidebarContent className="sidebar-content">
                         <CDBSidebarMenu>
+                            <NavLink exact to="/userUpdateProfile" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Update Profile</CDBSidebarMenuItem>
+                            </NavLink>
+
                             <NavLink exact to="/jobForm" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user">Post Jobs</CDBSidebarMenuItem>
                             </NavLink>
@@ -60,6 +64,10 @@ const Dashboard = () => {
                 {admin && librarian &&  
                     <CDBSidebarContent className="sidebar-content">
                         <CDBSidebarMenu>
+                            <NavLink exact to="/allMembers" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user" className="text-decoration-none">All Members</CDBSidebarMenuItem>
+                            </NavLink>
+
                             <NavLink exact to="/makeAdmin" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="user" className="text-decoration-none">Make Admin</CDBSidebarMenuItem>
                             </NavLink>

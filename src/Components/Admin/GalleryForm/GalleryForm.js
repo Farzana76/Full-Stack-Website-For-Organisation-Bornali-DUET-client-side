@@ -5,6 +5,7 @@ import Dashboard from '../../Dashboard/Dashboard/Dashboard';
 import VideoGalleryForm from './VideoGalleryForm/VideoGalleryForm';
 import GalleryFormFinal from './GalleryFormFinal';
 import ImageGalleryForm from './ImageGalleryForm/ImageGalleryForm';
+import ImageGalleryFormNew from './ImageGalleryForm/ImageGalleryFormNew';
 
 const GalleryForm = () => {
     const { user, loading } = useAuth();
@@ -34,6 +35,9 @@ const GalleryForm = () => {
                         </Tab>
                         <Tab eventKey="embedVideo" title="Embed Video" className="bg-white">
                             <VideoGalleryForm></VideoGalleryForm>
+                        </Tab>
+                        <Tab eventKey="imageGalleryFormNew" title="Img" className="bg-white">
+                            <ImageGalleryFormNew></ImageGalleryFormNew>
                         </Tab>
                     </Tabs>
                 </div>
